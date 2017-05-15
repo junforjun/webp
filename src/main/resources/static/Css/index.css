@@ -1,0 +1,15 @@
+.rel {
+	position: relative;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.font15p {
+	font-size: 15pt;
+}

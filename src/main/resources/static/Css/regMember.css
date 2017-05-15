@@ -1,0 +1,125 @@
+
+
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	font-size: 12px;
+	color: #6B6B6B;
+	font-family: verdana;
+	border-collapse : collapse
+}
+
+.main {
+	position: relative;
+	width: 1024px;
+	height: 100%;
+	overflow: hidden;
+	margin: 0 auto;
+	top: 3px;
+
+}
+
+.rel30 {
+	position: relative;
+	float: left;
+	width: 30%;
+	height : 668px;
+	border: 1px solid #666;
+	border-right: 0px;
+}
+
+.rel70 {
+	position: relative;
+	float: left;
+	width: 69%;
+	height : 668px;
+	border: 1px solid #666;
+	padding-left: 7px;
+
+}
+
+.HeaderBold {
+	font-size: 24px;
+
+}
+
+.H3 {
+	font-size: 36px;
+	font-weight: bold;
+}
+
+.headerRight {
+	position: absolute;
+	float: right;
+	background-color: #999;
+	color: #fff;
+	font-size: 10px;
+	left: 0px;
+	width: 140px;
+}
+
+.idBox {
+	background-color: #FEEEE2;
+	border-top: 1px dotted #E1763C;
+	border-bottom: 1px dotted #E1763C;
+	border-left: 1px dotted #E1763C;
+	border-right: 1px dotted #E1763C;
+	color: #E1763C;
+	font-size: 11pt;
+	width:120px;
+}
+
+.formBox {
+	background-color: #999;
+	border : 1px solid #FFF;
+	color: #999;
+	font-size: 11pt;
+	width:200px;
+}
+
+.regbox {
+	width: 100%;
+	height:20px;
+
+
+}
+
+.formbox {
+	height:20px;
+	width:200px;
+	border: 1px dotted #555;
+	text-align: right;
+	padding-right: 5px;
+	position: absolute;
+	vertical-align:bottom;
+}
+
+.textbox {
+	height:15px;
+	width:250px;
+	border: 2px solid #AAA;
+	color:#444;
+	text-align: left;
+	padding-right: 5px;
+
+}
+
+.rt {
+	text-align: right;
+	padding-right: 5px;
+}
+
+
+.css3button {
+	font-family: Arial, Helvetica, sans-serif;
+	text-align:left;
+	font-size: 14px;
+	color: #888888;
+	padding: 10px 20px;
+	background: #FFF;
+	border-radius: 7px;
+	border: 5px solid #3052b8;
+
+}
