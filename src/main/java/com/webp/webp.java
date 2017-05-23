@@ -21,10 +21,10 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @ComponentScan
 @EnableAutoConfiguration
 @EnableJpaRepositories
-public class Nandemokaki {
+public class webp {
 
     public static void main(String[] args) {
-        SpringApplication.run(Nandemokaki.class, args);
+        SpringApplication.run(webp.class, args);
     }
 
     @Order(Ordered.HIGHEST_PRECEDENCE)
