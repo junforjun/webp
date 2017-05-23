@@ -22,10 +22,8 @@ import com.webp.model.Login;
 import com.webp.model.QUserAuthentication;
 import com.webp.model.UserAuthentication;
 import com.webp.model.UserInfo;
-import com.webp.model.Users;
 import com.webp.model.db.UserAuthentication_DB;
 import com.webp.model.db.UserInfo_DB;
-import com.webp.model.db.Users_DB;
 import com.webp.service.UserService;
 import com.webp.util.StrUt;
 
@@ -42,9 +40,6 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserAuthentication_DB userAuthenticationDb;
-
-	@Autowired
-	private Users_DB UsersDb;
 
 	@Override
 	public UserDetails loadUserByUsername(String username)  {
@@ -110,14 +105,14 @@ public class UserServiceImpl implements UserService {
 
 		userAuthenticationDb.save(ua);
 
-		Users mailAccount = new Users();
-		mailAccount.username = user.getUsername();
-		mailAccount.pwdhash = StrUt.digestString(userInfo.userPass);
-		mailAccount.pwdalgorithm = "SHA";
-		mailAccount.useforwarding = 0;
-		mailAccount.usealias = 0;
-
-		UsersDb.save(mailAccount);
+//		Users mailAccount = new Users();
+//		mailAccount.username = user.getUsername();
+//		mailAccount.pwdhash = StrUt.digestString(userInfo.userPass);
+//		mailAccount.pwdalgorithm = "SHA";
+//		mailAccount.useforwarding = 0;
+//		mailAccount.usealias = 0;
+//
+//		UsersDb.save(mailAccount);
 	}
 
 	@Override
