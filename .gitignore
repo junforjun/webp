@@ -8,6 +8,7 @@ target/
 .project
 .settings
 .springBeans
+.mvn
 
 ### IntelliJ IDEA ###
 .idea
@@ -15,7 +16,7 @@ target/
 *.iml
 *.ipr
 *.log
-*.jar
+
 *.bak
 
 ### NetBeans ###
