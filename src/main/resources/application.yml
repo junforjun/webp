@@ -1,9 +1,5 @@
 spring:
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
-      suffix: .jsp
-      
+
   datasource:
     url: jdbc:postgresql://localhost:5432/
     username: postgres
@@ -19,8 +15,10 @@ mail:
     protocol: pop3
   pop3:
     host: 127.0.0.1
-    port: 110 
+    port: 110
     starttls:
       enable: true
 
 debug: true
+banner:
+  location:banner.txt

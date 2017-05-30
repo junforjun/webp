@@ -14,6 +14,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 /**
  * Main boot
+ *
  * @author KIM
  *
  */
@@ -23,18 +24,19 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @EnableJpaRepositories
 public class webp {
 
-    public static void main(String[] args) {
-        SpringApplication.run(webp.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(webp.class, args);
+	}
 
-    @Order(Ordered.HIGHEST_PRECEDENCE)
-    @Bean
-    public Filter characterEncodingFilter() {
-        CharacterEncodingFilter filter = new CharacterEncodingFilter();
-        filter.setEncoding("UTF-8");
-        filter.setForceEncoding(true);
-        return filter;
-    }
+	@Order(Ordered.HIGHEST_PRECEDENCE)
+	@Bean
+	public Filter characterEncodingFilter() {
+		CharacterEncodingFilter filter = new CharacterEncodingFilter();
+		filter.setEncoding("UTF-8");
+		filter.setForceEncoding(true);
+		return filter;
+	}
+
 
 
 }

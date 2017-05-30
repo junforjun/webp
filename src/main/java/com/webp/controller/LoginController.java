@@ -21,10 +21,10 @@ import com.webp.model.UserInfo;
 import com.webp.service.UserService;
 
 @Controller
-
 public class LoginController {
 
-	@Autowired UserService userService;
+	@Autowired 
+	UserService userService;
 
 	@Autowired
 	AuthenticationManager authenticationManager;
