@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.IdClass;
 /**
  * MODEL autogen macro
  * UserInfo
@@ -16,33 +17,61 @@ import javax.persistence.Table;
 public class UserInfo implements Serializable {
 	public static final String TABLE = "USER_INFO";
 
-	/** ID(Email) */
+	/** ユーザID */
 	@Id
 	@Column(name = "USER_ID")
 	public String userId;
 
-	/** PASS */
-	@Column(name = "USER_PASS")
+	/** ユーザパスワード */
+	@Column(name = "USER_PASS", nullable = false)
 	public String userPass;
 
-	/** 生年月日 */
-	@Column(name = "BIRTH_DAY")
-	public String birthDay;
+	/** ユーザブログURL */
+	@Column(name = "URL_ID", nullable = false)
+	public String urlId;
+
+	/** ユーザニックネーム */
+	@Column(name = "USER_NICK", nullable = false)
+	public String userNick;
+
+	/** 性 */
+	@Column(name = "FIRST_NAME", nullable = false)
+	public String firstName;
+
+	/** 名 */
+	@Column(name = "LAST_NAME", nullable = false)
+	public String lastName;
+
+	/** 認証済みフラグ */
+	@Column(name = "IS_VERIFICATIONED", nullable = false)
+	public String isVerificationed;
 
 	/** 性別 */
 	@Column(name = "SEX")
-	public Integer sex;
+	public String sex;
 
-	/** 住所1 */
-	@Column(name = "LOCATION")
-	public String location;
+	/** 郵便番号 */
+	@Column(name = "POST_CODE")
+	public String postCode;
 
-	/** ログイン時刻 */
-	@Column(name = "LAST_LOGIN", nullable = false)
-	public Timestamp lastLogin;
+	/** プロファイル画像 */
+	@Column(name = "AVATAR_FILE_LOC")
+	public String avatarFileLoc;
 
-	/** ログインIP */
-	@Column(name = "LOGIN_IP", nullable = false)
-	public String loginIp;
+	/** プロファイル文言 */
+	@Column(name = "SELF_INTRODUCE_TEXT")
+	public String selfIntroduceText;
+
+	/** 住所１ */
+	@Column(name = "ADDRESS1")
+	public String address1;
+
+	/** 住所２ */
+	@Column(name = "ADDRESS2")
+	public String address2;
+
+	/** 情報公開レベル */
+	@Column(name = "INFO_OPEN_LEVEL")
+	public String infoOpenLevel;
 
 }

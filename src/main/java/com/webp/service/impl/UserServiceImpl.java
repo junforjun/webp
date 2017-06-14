@@ -9,12 +9,10 @@ import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.mysema.query.jpa.JPQLQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
@@ -77,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
 		HashSet<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 
-		authorities.add(new SimpleGrantedAuthority(user.userAuth));
+//		authorities.add(new SimpleGrantedAuthority(user.userAuth));
 
         return authorities;
 	}
@@ -88,20 +86,29 @@ public class UserServiceImpl implements UserService {
 				.uniqueResult(userInfo);
 	}
 
-	@Override
-	@Transactional
-	public void createUser(Login user) throws Exception {
+		@Override
+	public void deleteUser(String username) {
+		// TODO 自動生成されたメソッド・スタブ
 
+	}
+
+	@Override
+	public PasswordEncoder passwordEncoder() {
+		return this.passwordEncoder;
+	}
+
+	@Override
+	public void createUser(UserInfo user) throws Exception {
 		UserInfo userInfo = new UserInfo();
 
-		userInfo.userId = user.getUsername();
-		userInfo.userPass = passwordEncoder.encode(user.getPassword());
+		userInfo.userId = user.userId;
+		userInfo.userPass = passwordEncoder.encode(user.userPass);
 
 		userInfoDb.save(userInfo);
 
 		UserAuthentication ua = new UserAuthentication();
-		ua.userId = user.getUsername();
-		ua.userAuth = "1";
+		ua.userId = user.userId;
+//		ua.userAuth = "1";
 
 		userAuthenticationDb.save(ua);
 
@@ -113,17 +120,7 @@ public class UserServiceImpl implements UserService {
 //		mailAccount.usealias = 0;
 //
 //		UsersDb.save(mailAccount);
-	}
 
-	@Override
-	public void deleteUser(String username) {
-		// TODO 自動生成されたメソッド・スタブ
-
-	}
-
-	@Override
-	public PasswordEncoder passwordEncoder() {
-		return this.passwordEncoder;
 	}
 
 
