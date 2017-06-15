@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -26,20 +26,13 @@
 
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
-		<div th:include="/WEB-INF/templates/header.html :: copy"></div>
+		<div th:include="commonTilesPart::header"></div>
 	</nav>
 
 
    <!-- Page Content -->
     <div class="container">
-		<br>
-       	<div class="row">
-        	<center><span class="mainTitle h1">　 Anela　</span></center>
-		</div>
-		<div class="row">
-        	<center><span class="mainTitle h3"> 　アネラ　</span></center>
-		</div>
-    	<div class="row"> 　</div>
+		
      	<hr>
       	<div class="">
       	<ul class="nav nav-pills">

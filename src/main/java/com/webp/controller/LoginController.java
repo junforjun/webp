@@ -29,9 +29,14 @@ public class LoginController {
 	@Autowired
 	AuthenticationManager authenticationManager;
 
-	@RequestMapping(value="/login", method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String login(HttpSession session) {
+		return "login";
+	}
+
+	@RequestMapping(value="/auth", method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String login(Login login, HttpSession session) {
+	public String auth(Login login, HttpSession session) {
 
 		UserInfo user = null;
 		try {
