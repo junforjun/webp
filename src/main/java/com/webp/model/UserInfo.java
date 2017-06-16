@@ -70,6 +70,14 @@ public class UserInfo implements Serializable {
 	@Column(name = "ADDRESS2")
 	public String address2;
 
+	/** ブログタイトル */
+	@Column(name = "BLOG_TITLE")
+	public String blogTitle;
+
+	/** ブログサブタイトル */
+	@Column(name = "BLOG_SUB_TITLE")
+	public String blogSubTitle;
+
 	/** 情報公開レベル */
 	@Column(name = "INFO_OPEN_LEVEL")
 	public String infoOpenLevel;

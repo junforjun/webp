@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.webp.service.ViewUserBlogService;
 import com.webp.service.model.userBlog.UserBlogRequest;
+import com.webp.service.model.userBlog.UserBlogResponse;
 
 @Controller
 public class UserBlogController {
@@ -17,11 +18,20 @@ public class UserBlogController {
 	private ViewUserBlogService blogService;
 
 	@RequestMapping(value = "/{blogUrl}", method = RequestMethod.GET)
-	public String blogMain(UserBlogRequest userBlogRequest, Model model, @PathVariable("url") String blogUrl) {
+	public String blogMain(UserBlogRequest userBlogRequest, Model model, @PathVariable("blogUrl") String blogUrl) {
 
 		System.out.println(userBlogRequest.name);
 
-		model.addAttribute(blogService.searchBlogContents(userBlogRequest));
+		userBlogRequest.url = blogUrl;
+
+		UserBlogResponse blogContents = blogService.searchBlogContents(userBlogRequest);
+
+		if(blogContents == null) {
+			return "pageNotFound";
+		}
+
+
+		model.addAttribute(blogContents);
 
 		return "user_main";
 
