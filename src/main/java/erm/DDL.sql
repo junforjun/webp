@@ -208,6 +208,8 @@ CREATE TABLE user_info (
 	self_introduce_text VARCHAR, 
 	address1 VARCHAR, 
 	address2 VARCHAR, 
+	blog_title VARCHAR(20), 
+	blog_sub_title VARCHAR(255), 
 	info_open_level VARCHAR(1)
 );
 
@@ -227,6 +229,8 @@ COMMENT ON COLUMN user_info.avatar_file_loc IS 'プロファイル画像';
 COMMENT ON COLUMN user_info.self_introduce_text IS 'プロファイル文言';
 COMMENT ON COLUMN user_info.address1 IS '住所１';
 COMMENT ON COLUMN user_info.address2 IS '住所２';
+COMMENT ON COLUMN user_info.blog_title IS 'ブログタイトル';
+COMMENT ON COLUMN user_info.blog_sub_title IS 'ブログサブタイトル';
 COMMENT ON COLUMN user_info.info_open_level IS '情報公開レベル';
 
 
