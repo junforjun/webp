@@ -5,73 +5,65 @@
 <body>
 
 	<div class="container" th:fragment="header">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
+
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
-			</button>
-		</div>
+			  </button>
+			  <a class="navbar-brand " href="#" style="color:#FF00FF;size: 15px">My-B.ME</p></a>
+			</div>
 
-		<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
 
-				<li>
-					<div class="input-group input-group-sm">
-						<input type="text" class="form-control form-search"
-							placeholder="id" aria-describedby="sizing-addon2"></input>
-					</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  <ul class="nav navbar-nav">
+
+
+
+				<li class="dropdown">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">カテゴリ <span class="caret"></span></a>
+				  <ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">Separated link</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="#">One more separated link</a></li>
+				  </ul>
 				</li>
-
-				<li>
-					<div class="input-group input-group-sm">
-						<input type="text" class="form-control form-search"
-							placeholder="pass" aria-describedby="sizing-addon2"></input>
-					</div>
-				</li>
-
+			  </ul>
+			  <form class="navbar-form navbar-right">
+				<div class="form-group">
+				  <input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			  </form>
+			  <ul class="nav navbar-nav navbar-right">
 				<li><a href="#">ログイン</a></li>
-				<li><a href="#">会員加入</a></li>
-				<li><a href="#">お問い合せ</a></li>
-			</ul>
-		</div>
+			  </ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
 	</div>
 
 
 
-	<div class="container" th:fragment="footer">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
 
+
+
+
+	<footer class="footer" th:fragment="footer">
+		<div class="container">
+			<p class="text-muted"><a href="#">Today : 100 / All : 298427</a></p>
 		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.html">ログイン</a></li>
-				<li><a href="#">会員加入</a></li>
-				<li><a href="#">お問い合せ</a></li>
-				<li>
-
-					<div class="input-group input-group-sm">
-						<input type="text" class="form-control form-search"
-							placeholder="商品検索" aria-describedby="sizing-addon3"></input>
-						<button type="submit" class="btn btn-default btn-sm form-search">検索</button>
-					</div>
+	</footer>
 
 
-				</li>
-			</ul>
-
-		</div>
-	</div>
 
 
 
