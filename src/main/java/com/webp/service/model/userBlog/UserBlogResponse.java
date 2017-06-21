@@ -11,6 +11,6 @@ public class UserBlogResponse extends ApiResponse {
 	public String title;
 	public String subTitle;
 
-	public List<MenuMaster> menu;
-	public List<CategoryDetail> category;
+	public List<MenuMaster> menuList;
+	public List<CategoryDetail> categoryList;
 }

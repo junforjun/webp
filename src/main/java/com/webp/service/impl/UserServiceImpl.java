@@ -81,12 +81,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserInfo readUser(String username) {
-		return new JPAQuery(em).from(userInfo).where(userInfo.userId.eq(username))
+	public UserInfo readUser(String url) {
+		return new JPAQuery(em).from(userInfo).where(userInfo.urlId.eq(url),userInfo.isVerificationed.eq("1"))
 				.uniqueResult(userInfo);
 	}
 
-		@Override
+	@Override
 	public void deleteUser(String username) {
 		// TODO 自動生成されたメソッド・スタブ
 
@@ -110,17 +110,7 @@ public class UserServiceImpl implements UserService {
 		ua.userId = user.userId;
 //		ua.userAuth = "1";
 
-		userAuthenticationDb.save(ua);
-
-//		Users mailAccount = new Users();
-//		mailAccount.username = user.getUsername();
-//		mailAccount.pwdhash = StrUt.digestString(userInfo.userPass);
-//		mailAccount.pwdalgorithm = "SHA";
-//		mailAccount.useforwarding = 0;
-//		mailAccount.usealias = 0;
-//
-//		UsersDb.save(mailAccount);
-
+		userInfoDb.save(user);
 	}
 
 

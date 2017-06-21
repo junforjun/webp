@@ -26,12 +26,13 @@ public class UserBlogController {
 
 		UserBlogResponse blogContents = blogService.searchBlogContents(userBlogRequest);
 
-		if(blogContents == null) {
+		if (blogContents == null) {
 			return "pageNotFound";
 		}
 
+		model.addAttribute("blogContents", blogContents);
 
-		model.addAttribute(blogContents);
+		model.addAttribute("test", "test");
 
 		return "user_main";
 
