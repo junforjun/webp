@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="">
-	<meta name="author" content="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
 
 
-	<title>My-B</title>
+<title>My-B</title>
 
-	<!-- Jquery/ Bootstrap -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script	src="Js/common.js"></script>
+<!-- Jquery/ Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="Js/common.js"></script>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-	<link href="Css/common.css" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link href="Css/common.css" rel="stylesheet">
 
 </head>
 
 <body>
 
 	<nav class="navbar navbar-inverse navbar-static-top">
-			<div class="container">
-				<div th:include="commonTilesPart::header"></div>
-			</div>
+		<div class="container">
+			<div th:include="commonTilesPart::header"></div>
+		</div>
 	</nav>
-
-
-
-
 
 	<!-- Marketing messaging and featurettes
 	================================================== -->
@@ -41,25 +37,26 @@
 
 	<div class="container marketing">
 
-	  <!-- START THE FEATURETTES -->
+		<!-- START THE FEATURETTES -->
 
-<div class="jumbotron">
-		<div class="container" >
-			 <h2 class="featurette-heading">
-			 	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>404 Page notFound</h2>
-			 	<span class="text-muted">指定されたページが見つかりません。</span>
+		<div class="jumbotron">
+				<h1 class="display-3"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 404 Page not found</h1>
+				<p class="lead"><span class="text-muted">指定されたページが見つかりません。</span></p>
+				<p>
+					<a class="btn btn-lg btn-success" href="#" role="button">以前ページに戻る</a>
+				</p>
 		</div>
+
+
+		<!-- /END THE FEATURETTES -->
+
+
+
 	</div>
-
-
-	  <!-- /END THE FEATURETTES -->
-
-
-
-	</div><!-- /.container -->
+	<!-- /.container -->
 
 
 	<footer th:include="commonTilesPart::footer"></footer>
 
-	</body>
+</body>
 </html>

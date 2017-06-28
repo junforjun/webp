@@ -32,7 +32,8 @@ public class ViewUserBlogServiceImpl implements ViewUserBlogService{
 		UserInfo user = userService.readUser(userBlogRequest.url);
 
 		if (user == null) {
-			return null;
+			response.noUser = "1";
+			return response;
 		}
 
 		response.title = user.blogTitle;

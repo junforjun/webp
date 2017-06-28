@@ -1,5 +1,6 @@
 package com.webp.service.model.userBlog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.webp.model.CategoryDetail;
@@ -10,7 +11,8 @@ public class UserBlogResponse extends ApiResponse {
 
 	public String title;
 	public String subTitle;
+	public String noUser = "0";
 
-	public List<MenuMaster> menuList;
-	public List<CategoryDetail> categoryList;
+	public List<MenuMaster> menuList = new ArrayList<>();
+	public List<CategoryDetail> categoryList  = new ArrayList<>();
 }

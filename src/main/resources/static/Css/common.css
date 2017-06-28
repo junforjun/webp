@@ -14,6 +14,11 @@
 	font-size: 15pt;
 }
 
+.siteTitle {
+	color: #FF00FF;
+	size: 15px;
+}
+
 @-ms-viewport     { width: device-width; }
 @-o-viewport      { width: device-width; }
 @viewport         { width: device-width; }
