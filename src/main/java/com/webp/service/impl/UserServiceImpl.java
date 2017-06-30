@@ -99,27 +99,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void createUser(UserInfo user) throws Exception {
-		UserInfo userInfo = new UserInfo();
+		userInfoDb.save(user);
 
-		userInfo.userId = user.userId;
-		userInfo.userPass = passwordEncoder.encode(user.userPass);
-
-		userInfoDb.save(userInfo);
-
-		UserAuthentication ua = new UserAuthentication();
-		ua.userId = user.userId;
-//		ua.userAuth = "1";
-
-		userAuthenticationDb.save(ua);
-
-//		Users mailAccount = new Users();
-//		mailAccount.username = user.getUsername();
-//		mailAccount.pwdhash = StrUt.digestString(userInfo.userPass);
-//		mailAccount.pwdalgorithm = "SHA";
-//		mailAccount.useforwarding = 0;
-//		mailAccount.usealias = 0;
-//
-//		UsersDb.save(mailAccount);
+    // 7/1만듬
+		System.out.println(user+"가입 완료");
 
 	}
 
