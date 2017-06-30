@@ -4,7 +4,7 @@
 function loginChk() {
 	jQuery.ajax({
 		type : "POST",
-		url : "/login/",
+		url : "/auth/",
 		data : {
 			"username" : $("#username").val(),
 			"password" : $("#password").val()

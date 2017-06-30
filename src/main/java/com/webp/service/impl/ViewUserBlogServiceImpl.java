@@ -25,7 +25,7 @@ public class ViewUserBlogServiceImpl implements ViewUserBlogService{
 	private UserService userService;
 
 	@Override
-	public UserBlogResponse searchBlogContents(UserBlogRequest userBlogRequest) {
+	public UserBlogResponse getCommonMenu(UserBlogRequest userBlogRequest) {
 
 		UserBlogResponse response = new UserBlogResponse();
 
@@ -36,11 +36,14 @@ public class ViewUserBlogServiceImpl implements ViewUserBlogService{
 			return response;
 		}
 
+		response.isMine = "1";
+		response.isLogin = "1";
+
 		response.title = user.blogTitle;
 		response.subTitle = user.blogSubTitle;
 		response.menuList = new JPAQuery(em).from(menuMaster).where(menuMaster.userId.eq(user.userId)).list(menuMaster);
 		response.categoryList = new JPAQuery(em).from(categoryDetail).where(categoryDetail.userId.eq(user.userId)).list(categoryDetail);
-
+		
 		return response;
 	}
 

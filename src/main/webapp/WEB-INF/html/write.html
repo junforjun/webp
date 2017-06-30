@@ -14,14 +14,41 @@
 	<!-- Jquery/ Bootstrap -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+	<script>
+	tinymce.init({
+		  selector: 'textarea',
+		  height: 500,
+		  theme: 'modern',
+		  plugins: [
+		    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+		    'searchreplace wordcount visualblocks visualchars code fullscreen',
+		    'insertdatetime media nonbreaking save table contextmenu directionality',
+		    'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help'
+		  ],
+		  toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+		  toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
+		  image_advtab: true,
+		  templates: [
+		    { title: 'Test template 1', content: 'Test 1' },
+		    { title: 'Test template 2', content: 'Test 2' }
+		  ],
+		  content_css: [
+		    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+		    '//www.tinymce.com/css/codepen.min.css'
+		  ]
+		 });
+
+
+	</script>
 	<script	src="Js/common.js"></script>
-	<script	src="Js/user_main.js"></script>
+	<script	src="Js/write.js"></script>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 	<link href="Css/common.css" rel="stylesheet">
-	<link href="Css/user_main.css" rel="stylesheet">
+	<link href="Css/write.css" rel="stylesheet">
 
 </head>
 
@@ -49,52 +76,23 @@
 			</div>
 	</nav>
 
-
-
-
-
-	<!-- Marketing messaging and featurettes
-	================================================== -->
-	<!-- Wrap the rest of the page in another container to center all the content. -->
-
-	<div class="container marketing">
-
-	  <!-- START THE FEATURETTES -->
-
-
-
-	  <hr class="featurette-divider">
-
-	  <div class="row featurette">
-		<div class="col-md-7 col-md-push-5">
-		  <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-		  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-
+	<div class="container">
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+			<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+			  <li><a href="#">HTML</a></li>
+			  <li><a href="#">CSS</a></li>
+			  <li><a href="#">JavaScript</a></li>
+			</ul>
 		</div>
-		<div class="col-md-5 col-md-pull-7">
-		  <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-		</div>
-	  </div>
-
-	  <hr class="featurette-divider">
-
-	  <div class="row featurette">
-		<div class="col-md-7">
-		  <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-		  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-		</div>
-		<div class="col-md-5">
-		  <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-		</div>
-	  </div>
-
-	  <hr class="featurette-divider">
-
-	  <!-- /END THE FEATURETTES -->
+		<hr>
+	</div>
 
 
-
-	</div><!-- /.container -->
+	<div class="container" >
+		<textarea></textarea>
+	</div>
 
 
 	<footer th:include="commonTilesPart::footer"></footer>

@@ -12,22 +12,21 @@ import com.webp.service.model.userBlog.UserBlogRequest;
 import com.webp.service.model.userBlog.UserBlogResponse;
 
 @Controller
-public class UserBlogController {
-
+public class WriteConmtroller {
 	@Autowired
 	private ViewUserBlogService blogService;
 
-	@RequestMapping(value = "/{blogUrl}", method = RequestMethod.GET)
-	public String blogMain(UserBlogRequest userBlogRequest, Model model, @PathVariable("blogUrl") String blogUrl) {
+	@RequestMapping(value = "/{blogUrl}/write", method = RequestMethod.GET)
+	public String writePost(UserBlogRequest userBlogRequest, Model model, @PathVariable("blogUrl") String blogUrl) {
 
 		System.out.println(userBlogRequest.name);
-		System.out.println(blogUrl);
+
 
 		userBlogRequest.url = blogUrl;
 
 		UserBlogResponse blogContents = blogService.getCommonMenu(userBlogRequest);
 		blogContents.url = blogUrl;
-
+		System.out.println(blogUrl);
 		model.addAttribute("blogContents", blogContents);
 		model.addAttribute("test", "test");
 
@@ -35,8 +34,7 @@ public class UserBlogController {
 			return "pageNotFound";
 		}
 
-		return "user_main";
+		return "write";
 
 	}
-
 }
