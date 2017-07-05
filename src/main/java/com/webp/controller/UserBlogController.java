@@ -20,9 +20,6 @@ public class UserBlogController {
 	@RequestMapping(value = "/{blogUrl}", method = RequestMethod.GET)
 	public String blogMain(UserBlogRequest userBlogRequest, Model model, @PathVariable("blogUrl") String blogUrl) {
 
-		System.out.println(userBlogRequest.name);
-		System.out.println(blogUrl);
-
 		userBlogRequest.url = blogUrl;
 
 		UserBlogResponse blogContents = blogService.getCommonMenu(userBlogRequest);

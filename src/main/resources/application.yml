@@ -21,3 +21,6 @@ mail:
 debug: true
 banner:
   location:banner.txt
+
+logging:
+  config:classpath:logback-spring.xml

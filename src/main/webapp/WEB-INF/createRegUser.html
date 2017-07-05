@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Webp</title>
+
+<!-- bootstrap -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- Js -->
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/createRegUser.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/login.css">
+
+</head>
+
+
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div th:include="commonTilesPart::header"></div>
+	</nav>
+	<!-- 회원가입  -->
+	<div class="container">
+
+		<div class="modal-dialog">
+
+			<article class="container">
+				<div class="col-md-8">
+					<div class="page-header">
+						<h1>
+							<label>Create a New Account</label> <small></small>
+						</h1>
+					</div>
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputEmail">
+								name</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="userfirstname" type="text"
+									placeholder="First name"> <input class="form-control"
+									id="userlastname" type="text" placeholder="Last name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputEmail">ID</label>
+							<div class="col-sm-6">
+								<input type="text" id="userID"
+									class="form-control onlyAlphabetAndNumber"
+									placeholder="More than 4 characters" min="4" required autofocus>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputEmail">email</label>
+							<div class="col-sm-6">
+								<input type="email" id="userEmail"
+									class="form-control onlyAlphabetAndNumber" placeholder="email"
+									min="4" required autofocus>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputPassword">New
+								password</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="userPassword" type="password"
+									placeholder="New password">
+								<p class="help-block">숫자, 특수문자 포함 8자 이상</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputPassword">New
+								password 확인</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="userPassword2" type="password"
+									placeholder="New password 확인">
+								<p class="help-block">비밀번호를 한번 더 입력해주세요.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputPassword">
+							</label>
+							<div class="col-sm-6">
+
+								<input type="radio" checked="checked" name="chk_info" value="F"
+									id="userSex">Female<input type="radio" name="chk_info"
+									value="M" placeholder="Male" id="userSex">Male
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputAgree">
+								약관 동의</label>
+							<div class="col-sm-6">
+								<p class="help-block">
+									<label> <input id="agree" type="checkbox" name="agree">
+										<a href="/agreement"> 이용약관</a>에 동의합니다.
+									</label>
+								</p>
+							</div>
+						</div>
+
+
+						<!-- <div class="form-group">
+							<label class="col-sm-3 control-label" for="inputPasswordCheck">비밀번호
+								확인</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="inputPasswordCheck"
+									type="password" placeholder="비밀번호 확인">
+								<p class="help-block">비밀번호를 한번 더 입력해주세요.</p>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputPassword">
+								성 </label> <label class="col-sm-3 control-label" for="inputPassword">
+								이름 </label>
+							<div class="col-sm-6">
+								<input type="text" id="name" class="form-control"
+									placeholder="성" min="2" required> <input type="text"
+									id="name" class="form-control" placeholder="이름" min="2"
+									required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputName">이름</label>
+							<div class="col-sm-6">
+								<input class="form-control" id="inputName" type="text"
+									placeholder="이름">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputNumber">휴대폰번호</label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input type="tel" class="form-control" id="inputNumber"
+										placeholder="- 없이 입력해 주세요" /> <span class="input-group-btn">
+										<button class="btn btn-success">
+											인증번호 전송<i class="fa fa-mail-forward spaceLeft"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputNumberCheck">인증번호
+								확인</label>
+							<div class="col-sm-6">
+								<div class="input-group">
+									<input class="form-control" id="inputNumberCheck" type="text"
+										placeholder="인증번호"> <span class="input-group-btn">
+										<button class="btn btn-success" type="button">
+											인증번호 확인<i class="fa fa-edit spaceLeft"></i>
+										</button>
+									</span>
+								</div>
+								<p class="help-block">전송된 인증번호를 입력해주세요.</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputAgree">약관
+								동의</label>
+							<div class="col-sm-6" data-toggle="buttons">
+								<label class="btn btn-warning active"> <input id="agree"
+									type="checkbox" autocomplete="off" chacked> <span
+									class="fa fa-check"></span>
+								</label> <a href="#">이용약관</a> 에 동의 합니다.
+							</div>
+						</div> -->
+
+						<div class="form-group">
+							<div class="col-sm-12 text-center">
+								<button class="btn btn-primary" onclick="regUser()">
+									Create Account<i class="fa fa-check spaceLeft"></i>
+								</button>
+								<button class="btn btn-danger" type="reset">
+									Cancel<i class="fa fa-times spaceLeft"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+					<hr>
+				</div>
+			</article>
+		</div>
+	</div>
+	<footer class="footer" id="page_footer">
+		<center>
+			<div class="container">
+				<p class="footer_text">이용약관 | 개인정보 취급방침 | 자주 묻는 질문 | 수수료</p>
+			</div>
+		</center>
+	</footer>
+
+
+</body>
+</html>

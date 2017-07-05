@@ -86,10 +86,14 @@ public class UserServiceImpl implements UserService {
 				.uniqueResult(userInfo);
 	}
 
-		@Override
-	public void deleteUser(String username) {
-		// TODO 自動生成されたメソッド・スタブ
+	@Override
+	public UserInfo readUserFromUrl(String url) {
+		return new JPAQuery(em).from(userInfo).where(userInfo.urlId.eq(url).and(userInfo.isVerificationed.eq("1")))
+				.uniqueResult(userInfo);
+	}
 
+	@Override
+	public void deleteUser(String username) {
 	}
 
 	@Override

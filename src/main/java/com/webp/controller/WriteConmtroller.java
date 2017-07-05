@@ -21,12 +21,13 @@ public class WriteConmtroller {
 
 		System.out.println(userBlogRequest.name);
 
-
 		userBlogRequest.url = blogUrl;
 
 		UserBlogResponse blogContents = blogService.getCommonMenu(userBlogRequest);
 		blogContents.url = blogUrl;
+		
 		System.out.println(blogUrl);
+		
 		model.addAttribute("blogContents", blogContents);
 		model.addAttribute("test", "test");
 
