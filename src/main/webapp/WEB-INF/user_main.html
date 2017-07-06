@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
   <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +12,6 @@
 
 	<title>My-B</title>
 
-	<!-- Jquery/ Bootstrap -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script	src="/js/common.js"></script>
 	<script	src="/js/user_main.js"></script>
 
@@ -91,13 +89,14 @@
 	  <hr class="featurette-divider">
 
 	  <!-- /END THE FEATURETTES -->
-
-
-
 	</div><!-- /.container -->
 
 
 	<footer th:include="commonTilesPart::footer"></footer>
+
+		<!-- Jquery/ Bootstrap -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	</body>
 </html>

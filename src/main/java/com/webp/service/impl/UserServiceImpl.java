@@ -103,12 +103,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void createUser(UserInfo user) throws Exception {
+		user.userPass = passwordEncoder().encode(user.userPass);
 		userInfoDb.save(user);
 
-    // 7/1만듬
-		System.out.println(user+"가입 완료");
-
+		System.out.println(user.userId + "가입 완료");
 	}
-
-
 }

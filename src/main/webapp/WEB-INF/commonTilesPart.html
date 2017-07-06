@@ -1,75 +1,77 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-
 <body>
+<div class="container" th:fragment="header">
+	<div class="container-fluid">
 
-	<div class="container" th:fragment="header">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-				<!-- Title -->
-				<a class="navbar-brand siteTitle" href="/">My-B.ME</a>
-			</div>
-
-
-
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-				<!-- カテゴリ -->
-				<ul class="nav navbar-nav">
-					<li th:if="${blogContents != null}">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">カテゴリ <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li th:each="category:${blogContents.categoryList}">
-								<a href="#" th:text="${category.catecoryName}">categoryList.Name</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-
-
-				<form class="navbar-form navbar-right">
-					<!-- 検索 -->
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search"></input>
-					</div>
-					<button type="submit" class="btn btn-default">検索</button>
-				</form>
-
-
-				<ul th:if="${blogContents.isLogin == '0' }" class="nav navbar-nav navbar-right">
-					<li><a href="/login">ログイン</a></li>
-				</ul>
-
-				<ul th:if="${blogContents.isMine == '1' }" class="nav navbar-nav navbar-right">
-					<li><a th:href="|${blogContents.url}/write|">書き込み</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
+			<!-- ★Title★ -->
+			<a class="navbar-brand siteTitle" href="/">My-B.ME</a>
 		</div>
-		<!-- /.container-fluid -->
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<!-- ★カテゴリ★ -->
+			<ul class="nav navbar-nav">
+				<li th:if="${blogContents != null}">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					カテゴリ
+					<span class="caret"></span></a>
+
+					<ul class="dropdown-menu">
+						<li th:each="category:${blogContents.categoryList}">
+							<a href="#" th:text="${category.catecoryName}">categoryList.Name</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<!-- ★検索テキストボックスと検索ボタン★ -->
+			<form class="navbar-form navbar-right">
+				<!-- 検索 -->
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search"></input>
+				</div>
+				<button type="submit" class="btn btn-default">検索</button>
+			</form>
+
+			<!-- ★ログインボタン★ -->
+			<ul th:if="${blogContents != null}" class="nav navbar-nav navbar-right">
+				<li th:if="${blogContents.isLogin == '0' }">
+					<a href="/login">ログイン</a>
+				</li>
+			</ul>
+
+			<!-- ★書き込みボタン★ -->
+			<ul th:if="${blogContents != null}" class="nav navbar-nav navbar-right">
+				<li th:if="${blogContents.isMine == '1' }" >
+					<a th:href="|${blogContents.url}/write|">書き込み</a>
+				</li>
+			</ul>
+
+		</div>
+		<!-- /.navbar-collapse -->
 	</div>
+	<!-- /.container-fluid -->
+</div>
 
 
 
 
+<footer class="footer" th:fragment="footer">
+	<div class="container">
+		<p th:if="${blogContents != null}" class="text-muted">
 
-
-
-	<footer class="footer" th:fragment="footer">
-		<div class="container">
-			<p th:if="${blogContents != null}" class="text-muted">
-
-				<a href="#">Today : 100 / All : 298427</a>
-			</p>
-		</div>
-	</footer>
-
-
+			<a href="#">Today : 100 / All : 298427</a>
+		</p>
+	</div>
+</footer>
 
 
 

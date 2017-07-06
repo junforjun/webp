@@ -36,7 +36,7 @@ function regUser() {
 
 	jQuery.ajax({
 		type : "POST",
-		url : "/regUser/",
+		url : "/user/regUser/",
 		data : {
 			"userfirstname" : $("#userfirstname").val(),
 			"userlastname" : $("#userlastname").val(),

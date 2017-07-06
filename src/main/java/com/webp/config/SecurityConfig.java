@@ -34,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/login/getmail").permitAll()
                     .antMatchers("/js/*").permitAll()
                     .antMatchers("/css/*").permitAll()
-                    .antMatchers("/user").hasAuthority("1")
                     .antMatchers("/admin").hasAuthority("0")
 //                    .anyRequest().authenticated()
                     .and()
