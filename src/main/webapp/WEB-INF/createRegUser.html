@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
+<html>
 <head>
 
 <meta charset="UTF-8">
 <title>Webp</title>
 
-<!-- Jquery/ Bootstrap -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="/js/common.js" th:src="@{/js/common.js}"></script>
-<script src="/js/createRegUser.js" th:src="@{/js/createRegUser.js}"></script>
+<!-- bootstrap -->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<!-- CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link href="/css/common.css" th:href="@{/css/common.css}" rel="stylesheet">
-<link href="/css/createRegUser.css" th:href="@{/css/createRegUser.css}" rel="stylesheet">
+	<!-- Js -->
+	<script type="text/javascript" src="/js/common.js"></script>
+	<script type="text/javascript" src="/js/createRegUser.js"></script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/common.css">
+	<link rel="stylesheet" href="/css/login.css">
+
 </head>
 
 
 <body>
+
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div th:include="commonTilesPart::header"></div>
 	</nav>
-
-
 	<!-- 회원가입  -->
 	<div class="container">
-
 		<div class="modal-dialog">
-
 			<article class="container">
 				<div class="col-md-8">
 					<div class="page-header">
@@ -37,134 +37,92 @@
 							<label>Create a New Account</label> <small></small>
 						</h1>
 					</div>
+
 					<form class="form-horizontal">
+
+						<!-- ID(E-MAIL) -->
 						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputEmail"> name</label>
+							<label class="col-sm-3 control-label" for="inputEmail">E-Mail(ID)</label>
 							<div class="col-sm-6">
-								<input class="form-control" id="userfirstname" type="text" placeholder="First name"> <input class="form-control" id="userlastname"
-									type="text" placeholder="Last name"
-								>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputEmail">ID</label>
-							<div class="col-sm-6">
-								<input type="text" id="userID" class="form-control onlyAlphabetAndNumber" placeholder="More than 4 characters" min="4" required autofocus>
+								<input type="email" onchange="changeURL(this)" id="userEmail" class="form-control onlyAlphabetAndNumber" placeholder="E-Mail" required autofocus value = "kyuno1984@gmail.com">
 							</div>
 						</div>
 
+						<!-- NAME -->
 						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputEmail">email</label>
+							<label class="col-sm-3 control-label" for="inputEmail">
+								name
+							</label>
 							<div class="col-sm-6">
-								<input type="email" id="userEmail" class="form-control onlyAlphabetAndNumber" placeholder="email" min="4" required autofocus>
+								<input class="form-control" id="userfirstname" type="text" placeholder="First name" value = "First name">
+								<input class="form-control" id="userlastname" type="text" placeholder="Last name" value = "Last name">
 							</div>
 						</div>
+
+						<!-- Password -->
 						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputPassword">New password</label>
+							<label class="col-sm-3 control-label" for="inputPassword">Password</label>
 							<div class="col-sm-6">
-								<input class="form-control" id="userPassword" type="password" placeholder="New password">
+								<input class="form-control" id="userPassword" type="password" placeholder="password" value = "rladbsgh1">
 								<p class="help-block">숫자, 특수문자 포함 8자 이상</p>
 							</div>
 						</div>
+
+						<!-- Password Confirm -->
 						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputPassword">New password 확인</label>
+							<label class="col-sm-3 control-label" for="inputPassword">New
+								password 확인</label>
 							<div class="col-sm-6">
-								<input class="form-control" id="userPassword2" type="password" placeholder="New password 확인">
+								<input class="form-control" id="userPassword2" type="password" placeholder="New password 확인" value = "rladbsgh1">
 								<p class="help-block">비밀번호를 한번 더 입력해주세요.</p>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputPassword"> </label>
-							<div class="col-sm-6">
 
-								<input type="radio" checked="checked" name="chk_info" value="F" id="userSex">Female<input type="radio" name="chk_info" value="M"
-									placeholder="Male" id="userSex"
-								>Male
+						<!-- Nick -->
+						<div class="form-group">
+							<label class="col-sm-3 control-label">NickName</label>
+							<div class="col-sm-6">
+								<input type="text" id="userNick" class="form-control onlyAlphabetAndNumber" placeholder="NickName" required autofocus value = "nick">
 							</div>
 						</div>
+
+						<!-- Blog Url -->
 						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputAgree"> 약관 동의</label>
+							<label class="col-sm-3 control-label">Blog URL</label>
+							<div class="col-sm-6">
+								<input type="text" id="urlId" class="form-control onlyAlphabetAndNumber" placeholder="E-Mail" required autofocus value = "kyuno1984">
+							</div>
+						</div>
+
+
+
+						<!-- Sex  -->
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputPassword"></label>
+							<div class="col-sm-6">
+								<input type="radio" checked="checked" name="chk_info" value="M" placeholder="Male" id=userSex>Male
+								<input type="radio" name="chk_info" value="F" id="userSex">Female
+							</div>
+						</div>
+
+						<!-- Agree -->
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="inputAgree">약관 동의</label>
 							<div class="col-sm-6">
 								<p class="help-block">
-									<label> <input id="agree" type="checkbox" name="agree"> <a href="/agreement"> 이용약관</a>에 동의합니다.
+									<label> <input id="agree" type="checkbox" name="agree">
+										<a href="/agreement">이용약관</a>에 동의합니다.
 									</label>
 								</p>
 							</div>
 						</div>
 
 
-						<!-- <div class="form-group">
-							<label class="col-sm-3 control-label" for="inputPasswordCheck">비밀번호
-								확인</label>
-							<div class="col-sm-6">
-								<input class="form-control" id="inputPasswordCheck"
-									type="password" placeholder="비밀번호 확인">
-								<p class="help-block">비밀번호를 한번 더 입력해주세요.</p>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputPassword">
-								성 </label> <label class="col-sm-3 control-label" for="inputPassword">
-								이름 </label>
-							<div class="col-sm-6">
-								<input type="text" id="name" class="form-control"
-									placeholder="성" min="2" required> <input type="text"
-									id="name" class="form-control" placeholder="이름" min="2"
-									required>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputName">이름</label>
-							<div class="col-sm-6">
-								<input class="form-control" id="inputName" type="text"
-									placeholder="이름">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputNumber">휴대폰번호</label>
-							<div class="col-sm-6">
-								<div class="input-group">
-									<input type="tel" class="form-control" id="inputNumber"
-										placeholder="- 없이 입력해 주세요" /> <span class="input-group-btn">
-										<button class="btn btn-success">
-											인증번호 전송<i class="fa fa-mail-forward spaceLeft"></i>
-										</button>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputNumberCheck">인증번호
-								확인</label>
-							<div class="col-sm-6">
-								<div class="input-group">
-									<input class="form-control" id="inputNumberCheck" type="text"
-										placeholder="인증번호"> <span class="input-group-btn">
-										<button class="btn btn-success" type="button">
-											인증번호 확인<i class="fa fa-edit spaceLeft"></i>
-										</button>
-									</span>
-								</div>
-								<p class="help-block">전송된 인증번호를 입력해주세요.</p>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label" for="inputAgree">약관
-								동의</label>
-							<div class="col-sm-6" data-toggle="buttons">
-								<label class="btn btn-warning active"> <input id="agree"
-									type="checkbox" autocomplete="off" chacked> <span
-									class="fa fa-check"></span>
-								</label> <a href="#">이용약관</a> 에 동의 합니다.
-							</div>
-						</div> -->
 
 						<div class="form-group">
 							<div class="col-sm-12 text-center">
 								<button class="btn btn-primary" onclick="regUser()">
-									Create Account<i class="fa fa-check spaceLeft"></i>
+									Create Account
 								</button>
 								<button class="btn btn-danger" type="reset">
 									Cancel<i class="fa fa-times spaceLeft"></i>
@@ -184,6 +142,7 @@
 			</div>
 		</center>
 	</footer>
+
 
 </body>
 </html>

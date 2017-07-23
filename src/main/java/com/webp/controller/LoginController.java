@@ -10,6 +10,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,7 +19,10 @@ import com.google.gson.Gson;
 import com.webp.config.AuthenticationToken;
 import com.webp.model.Login;
 import com.webp.model.UserInfo;
+import com.webp.model.UserLogin;
+import com.webp.model.db.UserLogin_DB;
 import com.webp.service.UserService;
+import com.webp.util.DateUtil;
 
 @Controller
 public class LoginController {
@@ -29,6 +33,9 @@ public class LoginController {
 	@Autowired
 	AuthenticationManager authenticationManager;
 
+	@Autowired
+	private UserLogin_DB userLogin;
+
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login(HttpSession session) {
 		return "login";
@@ -36,7 +43,7 @@ public class LoginController {
 
 	@RequestMapping(value="/auth", method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String auth(Login login, HttpSession session) {
+	public String auth(Model model, Login login, HttpSession session) {
 
 		UserInfo user = null;
 		try {
@@ -53,6 +60,16 @@ public class LoginController {
 			return null;
 		}
 
-        return new Gson().toJson(new AuthenticationToken(user.userId, userService.getAuthorities(user.userId), session.getId()));
+		UserLogin userLogin = new UserLogin();
+
+		userLogin.userId = user.userId;
+		userLogin.loginTime = DateUtil.getCurrentTimeStamp();
+
+
+
+		model.addAttribute("AuthenticationToken", new Gson().toJson(
+				new AuthenticationToken(user.userId, userService.getAuthorities(user.userId), session.getId())));
+
+        return user.urlId;
 	}
 }

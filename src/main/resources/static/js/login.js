@@ -14,7 +14,7 @@ function loginChk() {
 			if (data == "") {
 				alert("Check ID or Password");
 			} else {
-				redirect("/mail/")
+				redirect("/" + "data")
 			}
 		},
 		complete : function(data) {

@@ -1,56 +1,35 @@
 function regUser() {
-	if ($('#userfirstname').val() == "" || $('#userfirstname').val().length > 10) {
-		alert("Check First name");
-		return;
-	}
-	if ($('#userlastname').val() == "" || $('#userlastname').val().length > 10) {
-		alert("Check Last name");
-		return;
-	}
-	if ($('#userID').val() == "" || $('#userID').val().length < 4) {
-		alert("More than 4 characters");
-		return;
-	}
-	if ($('#userEmail').val() == "" || $('#userEmail').val().length < 4) {
-		alert("Check Email");
-		return;
-	}
-	if ($('#userPassword').val() == "" || $('#userPassword').val().length < 4) {
-		alert("Check Password");
-		return;
-	}
-	if ($('#userPassword2').val() == "" || $('#userPassword2').val().length < 4) {
-		alert("Check Password2");
-		return;
-	}
+
 	if ($('#userPassword').val() != $('#userPassword2').val()) {
 		alert("패스워드가 다름");
 		return;
 	}
-
 /*	if ($('#agree').val() == "") {
 		alert("동의해");
 		return;
 	}
 	alert("Male" + $("agree").val());*/
 
+
 	jQuery.ajax({
 		type : "POST",
 		url : "/user/regUser/",
 		data : {
-			"userfirstname" : $("#userfirstname").val(),
-			"userlastname" : $("#userlastname").val(),
-			"userEmail" : $("#userEmail").val(),
-			"userID" : $("#userID").val(),
-			"userPassword" : $("#userPassword").val(),
-			"userSex" : $("input[type=radio][id=userSex]:checked").val()
+			"userId" : $("#userEmail").val(),
+			"firstName" : $("#userfirstname").val(),
+			"lastName" : $("#userlastname").val(),
+			"userPass" : $("#userPassword").val(),
+			"userNick" : $("#userNick").val(),
+			"urlId" : $("#urlId").val(),
+			"sex" : $("input[type=radio][id=userSex]:checked").val()
 		},
+
 		success : function(data) {
-			if (data != "1") {
-				alert(data);
+			alert(data);
+			if (data == "1") {
+				redirect("/" + $("#urlId").val());
 			} else {
-				alert("Welcome To Funble Mail Server");
-				$("#dismiss").click();
+				alert(data);
 			}
 		},
 		complete : function(data) {
@@ -58,7 +37,20 @@ function regUser() {
 		},
 		error : function(xhr, status, error) {
 			alert("server error" + status);
+			alert(error);
+
 		}
 	});
 
+}
+
+
+
+function changeURL(control) {
+	var splitedId = control.value.split("@");
+	if (splitedId.length == 2) {
+		$("#urlId").val(splitedId[0]);
+		$("#userNick").val(splitedId[0]);
+
+	}
 }

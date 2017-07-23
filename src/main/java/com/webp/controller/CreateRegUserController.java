@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webp.model.UserInfo;
 import com.webp.service.UserService;
-import com.webp.service.model.userCreate.UserCreateRequest;
 
 @Controller
-public class CreateRegUser {
+public class CreateRegUserController {
 
 	@Autowired
 	UserService userService;
@@ -25,30 +24,16 @@ public class CreateRegUser {
 
 	@RequestMapping(value = "/user/registration", method = RequestMethod.GET)
 	public String login(Model model, HttpSession session) {
-
-		model.addAttribute("aa", "say hellow");
-
 		return "createRegUser";
 	}
 
 	@RequestMapping(value = "/user/regUser", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String createUser(UserCreateRequest userCreateRequest, HttpSession session) {
+	public String createUser(UserInfo userInfo, HttpSession session) {
 
-		UserInfo userInfo = new UserInfo();
-		userInfo.firstName = userCreateRequest.userfirstname;
-		userInfo.lastName = userCreateRequest.userlastname;
-		// userInfo. = userCreateRequest.userEmail;
-		userInfo.userId = userCreateRequest.userID;
-		userInfo.userPass = userCreateRequest.userPassword;
-		userInfo.sex = userCreateRequest.userSex;
+		System.out.println(userInfo.toString());
+		userService.createUser(userInfo);
 
-		try {
-			userService.createUser(userInfo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return userInfo.userId + " 안녕?";
-
+		return "1";
 	}
 }

@@ -18,7 +18,9 @@ public interface UserService extends UserDetailsService {
 
 	public UserInfo readUserFromUrl(String url);
 
-	public void createUser(UserInfo user) throws Exception ;
+	public void createUser(UserInfo user);
+
+	public int validateUser(UserInfo user);
 
 	public void deleteUser(String username);
 

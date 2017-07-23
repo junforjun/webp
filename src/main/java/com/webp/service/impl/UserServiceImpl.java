@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,10 +17,12 @@ import org.springframework.stereotype.Service;
 
 import com.mysema.query.jpa.JPQLQuery;
 import com.mysema.query.jpa.impl.JPAQuery;
+import com.webp.model.CategoryDetail;
 import com.webp.model.Login;
 import com.webp.model.QUserAuthentication;
 import com.webp.model.UserAuthentication;
 import com.webp.model.UserInfo;
+import com.webp.model.db.CategoryDetail_DB;
 import com.webp.model.db.UserAuthentication_DB;
 import com.webp.model.db.UserInfo_DB;
 import com.webp.service.UserService;
@@ -35,6 +38,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserInfo_DB userInfoDb;
+
+	@Autowired
+	private CategoryDetail_DB categoryDetail_DB;
 
 	@Autowired
 	private UserAuthentication_DB userAuthenticationDb;
@@ -102,10 +108,38 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void createUser(UserInfo user) throws Exception {
+	@Transactional
+	public void createUser(UserInfo user) {
 		user.userPass = passwordEncoder().encode(user.userPass);
+		user.blogTitle = "まだ設定されていません。";
+		user.blogSubTitle = "";
+
+		user.infoOpenLevel = "1";
+		user.isVerificationed = "1";
+
 		userInfoDb.save(user);
 
-		System.out.println(user.userId + "가입 완료");
+
+		// TODO メニュー設定必要
+//		MenuMaster menu = new MenuMaster();
+
+		CategoryDetail category = new CategoryDetail();
+
+		category.catecoryName = "基本カテゴリ";
+		category.categoryCode = "0";
+
+		category.userId = user.userId;
+
+		category.topCategoryFlag = "1";
+
+		categoryDetail_DB.save(category);
+	}
+
+	@Override
+	public int validateUser(UserInfo user) {
+
+
+
+		return 0;
 	}
 }

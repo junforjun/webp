@@ -25,6 +25,10 @@
 <body>
 	<div class="container">
 
+
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div th:include="commonTilesPart::header"></div>
+		</nav>
 		<!-- main st -->
 
 		<h2 class="form-signin-heading siteTitle">My-B.ME</h2>
@@ -33,8 +37,12 @@
 		</div>
 
 		<div class="rel">
-		<label for="inputEmail" class="sr-only">ID</label> <input type="text" id="username" class="form-control" placeholder="ID" required autofocus>
-		<label for="inputPassword" class="sr-only">Password</label><input type="password" id="password" class="form-control" placeholder="Password" required>
+			<label for="inputEmail" class="sr-only">ID</label>
+			<input type="text" id="username" class="form-control" placeholder="ID" required autofocus>
+
+			<label for="inputPassword" class="sr-only">Password</label>
+			<input type="password" id="password" class="form-control" placeholder="Password" required>
+
 		<div class="checkbox">
 			<label class="checkbox"> <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> 自動ログイン
 			</label>
@@ -42,7 +50,7 @@
 		</div>
 		<button class="btn btn-md btn-primary btn-block" onclick="loginChk()">Sign in</button>
 		<br>
-		<button class="btn btn-md btn-info btn-block">新規加入</button>
+		<button class="btn btn-md btn-info btn-block" onclick="redirect('/user/registration')">新規加入</button>
 	</div>
 	<!-- /container -->
 
