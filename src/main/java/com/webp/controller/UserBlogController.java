@@ -1,5 +1,7 @@
 package com.webp.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.webp.service.ViewUserBlogService;
-import com.webp.service.model.userBlog.UserBlogRequest;
-import com.webp.service.model.userBlog.UserBlogResponse;
+import com.webp.service.model.service.common.ApiResponse;
 
 @Controller
 public class UserBlogController {
@@ -18,22 +19,16 @@ public class UserBlogController {
 	private ViewUserBlogService blogService;
 
 	@RequestMapping(value = "/{blogUrl}", method = RequestMethod.GET)
-	public String blogMain(UserBlogRequest userBlogRequest, Model model, @PathVariable("blogUrl") String blogUrl) {
+	public String blogMain(@PathVariable("blogUrl") String blogUrl, Model model, HttpSession session) {
 
-		userBlogRequest.url = blogUrl;
+		ApiResponse response = blogService.getCommonMenu(blogUrl, session);
 
-		UserBlogResponse blogContents = blogService.getCommonMenu(userBlogRequest);
-		blogContents.url = blogUrl;
-
-		model.addAttribute("blogContents", blogContents);
-		model.addAttribute("test", "test");
-
-		if ("1".equals(blogContents.noUser)) {
+		if ("1".equals(response.noUser)) {
 			return "pageNotFound";
 		}
 
+		model.addAttribute("common", response);
+
 		return "user_main";
-
 	}
-
 }

@@ -19,13 +19,13 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<!-- ★カテゴリ★ -->
 			<ul class="nav navbar-nav">
-				<li th:if="${blogContents != null}">
+				<li th:if="${common != null}">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 					カテゴリ
 					<span class="caret"></span></a>
 
 					<ul class="dropdown-menu">
-						<li th:each="category:${blogContents.categoryList}">
+						<li th:each="category:${common.categoryList}">
 							<a href="#" th:text="${category.catecoryName}">categoryList.Name</a>
 						</li>
 					</ul>
@@ -42,18 +42,26 @@
 			</form>
 
 			<!-- ★ログインボタン★ -->
-			<ul th:if="${blogContents != null}" class="nav navbar-nav navbar-right">
-				<li th:if="${blogContents.isLogin == '0' }">
+			<ul th:if="${common != null}" class="nav navbar-nav navbar-right">
+				<li th:if="${common.isLogin == '0' }">
 					<a href="/login">ログイン</a>
 				</li>
 			</ul>
 
-			<!-- ★書き込みボタン★ -->
-			<ul th:if="${blogContents != null}" class="nav navbar-nav navbar-right">
-				<li th:if="${blogContents.isMine == '1' }" >
-					<a th:href="|${blogContents.url}/write|">書き込み</a>
+			<!-- ★ログインボタン★ -->
+			<ul th:if="${common != null}" class="nav navbar-nav navbar-right">
+				<li th:if="${common.isLogin == '1' }">
+					<a href="/logout">ログアウト</a>
 				</li>
 			</ul>
+
+			<!-- ★書き込みボタン★ -->
+			<ul th:if="${common != null}" class="nav navbar-nav navbar-right">
+				<li th:if="${common.isMine == '1' }" >
+					<a th:href="|${common.url}/write|">書き込み</a>
+				</li>
+			</ul>
+
 
 		</div>
 		<!-- /.navbar-collapse -->
@@ -66,7 +74,7 @@
 
 <footer class="footer" th:fragment="footer">
 	<div class="container">
-		<p th:if="${blogContents != null}" class="text-muted">
+		<p th:if="${common != null}" class="text-muted">
 
 			<a href="#">Today : 100 / All : 298427</a>
 		</p>

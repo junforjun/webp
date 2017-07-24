@@ -14,7 +14,14 @@ function loginChk() {
 			if (data == "") {
 				alert("Check ID or Password");
 			} else {
-				redirect("/" + "data")
+
+				if(data.startsWith("http://")) {
+					alert("!")
+					redirect(data);
+				} else {
+					redirect("/" + data);
+				}
+
 			}
 		},
 		complete : function(data) {

@@ -10,14 +10,18 @@
 
 	<title>My-B</title>
 
+	<!-- Jquery/ Bootstrap -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ezk8qp0c5xbch4sz9mlc7sj3f0v3oks06rxyatgli9vaifl7"></script>
 	<script	src="/js/common.js" th:src="@{/js/common.js}"></script>
-	<script	src="/js/write1.js" th:src="@{/js/write1.js}"></script>
+	<script	src="/js/write1.js"></script>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 	<link href="/css/common.css" th:href="@{/css/common.css}" rel="stylesheet">
-	<link href="/css/write.css" th:href="@{/css/write1.css}" rel="stylesheet">
+	<link href="/css/write1.css" rel="stylesheet">
 
 </head>
 
@@ -29,12 +33,12 @@
 
 			<!-- ■■■■ブログタイトル ■■■■-->
 			<h1 style="color:white;'">
-				<span th:text="${blogContents.title}">title</span>
+				<span th:text="${common.title}">title</span>
 			</h1>
 
 			<!-- ■■■■ブログサブタイトル ■■■■-->
 			<p style="color:white;">
-				<span th:text="${blogContents.subTitle}">subtitle</span>
+				<span th:text="${common.subTitle}">subtitle</span>
 			</p>
 		</div>
 	</div>
@@ -51,11 +55,11 @@
 					<div class="dropdown">
 						<label class="control-label" for="email">カテゴリ : </label>	 
 						<button class="btn btn-default dropdown-toggle " type="button" data-toggle="dropdown">
-							カテゴリ選択   <span class="caret"></span>
+							<span class="caret"></span>
 						</button>
 						 
 						<ul class="dropdown-menu">
-							<li th:each="category:${blogContents.categoryList}">
+							<li th:each="category:${common.categoryList}">
 								<a href="#" class="category" th:text="${category.catecoryName}">categoryList.Name</a>
 							</li>
 						</ul>
@@ -80,6 +84,12 @@
 		<textarea></textarea>
 	</div>
 
+	<div class="container text-right">
+	<hr>
+		<button class="btn btn-lg btn-primary" onclick="">下書き</button>
+		<button class="btn btn-lg btn-info" onclick="">全員に公開</button>
+		<button class="btn btn-lg btn-info" onclick="">友達限定公開</button>
+	</div>
 
 	<footer th:include="commonTilesPart::footer"></footer>
 

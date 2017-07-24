@@ -39,10 +39,6 @@ function initMap() {
 				});
 			});
 	  }
-
-
-
-
 }
 /**
  * on Function

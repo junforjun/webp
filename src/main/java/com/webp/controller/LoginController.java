@@ -1,5 +1,6 @@
 package com.webp.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import com.webp.model.UserLogin;
 import com.webp.model.db.UserLogin_DB;
 import com.webp.service.UserService;
 import com.webp.util.DateUtil;
+import com.webp.util.StrUtil;
 
 @Controller
 public class LoginController {
@@ -34,10 +36,13 @@ public class LoginController {
 	AuthenticationManager authenticationManager;
 
 	@Autowired
-	private UserLogin_DB userLogin;
+	private UserLogin_DB userLoginDB;
 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login(HttpSession session) {
+	public String login(HttpSession session, HttpServletRequest request) {
+
+		String referrer = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", referrer);
 		return "login";
 	}
 
@@ -55,6 +60,8 @@ public class LoginController {
 			          SecurityContextHolder.getContext());
 
 			user = userService.readUser(login.getUsername());
+
+			session.setAttribute(user.userId, user);
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
 			return null;
@@ -65,11 +72,19 @@ public class LoginController {
 		userLogin.userId = user.userId;
 		userLogin.loginTime = DateUtil.getCurrentTimeStamp();
 
+		userLoginDB.save(userLogin);
 
 
 		model.addAttribute("AuthenticationToken", new Gson().toJson(
 				new AuthenticationToken(user.userId, userService.getAuthorities(user.userId), session.getId())));
 
-        return user.urlId;
+
+		String referrer = (String)session.getAttribute("prevPage");
+
+
+		System.out.println("★★★★★★★" + referrer);
+
+        return StrUtil.isEmpty(referrer) ? user.urlId : referrer;
 	}
+
 }

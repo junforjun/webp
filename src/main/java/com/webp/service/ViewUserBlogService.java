@@ -4,16 +4,18 @@ import static com.webp.model.QCategoryDetail.*;
 import static com.webp.model.QMenuMaster.*;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.webp.model.UserInfo;
-import com.webp.service.model.userBlog.UserBlogRequest;
-import com.webp.service.model.userBlog.UserBlogResponse;
+import com.webp.service.model.service.common.ApiResponse;
 
 @Service
 public class ViewUserBlogService {
@@ -26,21 +28,31 @@ public class ViewUserBlogService {
 	@Autowired
 	private UserService userService;
 
-	public UserBlogResponse getCommonMenu(UserBlogRequest userBlogRequest) {
+	public ApiResponse getCommonMenu(String url, HttpSession session) {
 
-		UserBlogResponse response = new UserBlogResponse();
+		System.out.println("Requested Page : " + url);
 
-		UserInfo user = userService.readUserFromUrl(userBlogRequest.url);
+		ApiResponse response = new ApiResponse();
+		UserInfo user = userService.readUserFromUrl(url);
 
 		if (user == null) {
 			response.noUser = "1";
-			logger.debug("url not found : " + userBlogRequest.url);
+			logger.debug("url not found : " + url);
 			return response;
 		}
 
-		response.isMine = "1";
-		response.isLogin = "1";
 
+		SecurityContext con = (SecurityContext)session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
+
+		if(con != null) {
+			System.out.println(con.getAuthentication().getName() + ": Logined");
+			response.isLogin = "1";
+
+			if(user.userId.equals(con.getAuthentication().getName())) {
+				response.isMine = "1";
+			}
+		}
+		response.url = url;
 		response.title = user.blogTitle;
 		response.subTitle = user.blogSubTitle;
 		response.menuList = new JPAQuery(em).from(menuMaster).where(menuMaster.userId.eq(user.userId)).list(menuMaster);
@@ -48,5 +60,4 @@ public class ViewUserBlogService {
 
 		return response;
 	}
-
 }

@@ -6,7 +6,7 @@ import java.security.MessageDigest;
 
 import javax.mail.internet.MimeUtility;
 
-public class StrUt {
+public class StrUtil {
 
 	/**
 	 * 数値判定Util
@@ -45,5 +45,17 @@ public class StrUt {
 		encodedStream.write(digest);
 
 		return bos.toString("iso-8859-1");
+	}
+
+	public static String getLastUrl(String url) {
+		if (isEmpty(url)) {
+			return null;
+		}
+
+		String[] strArr = url.split("/");
+
+
+
+		return null;
 	}
 }

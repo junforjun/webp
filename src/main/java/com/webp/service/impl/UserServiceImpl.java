@@ -26,7 +26,7 @@ import com.webp.model.db.CategoryDetail_DB;
 import com.webp.model.db.UserAuthentication_DB;
 import com.webp.model.db.UserInfo_DB;
 import com.webp.service.UserService;
-import com.webp.util.StrUt;
+import com.webp.util.StrUtil;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 		System.out.println(user.userPass);
 
 		try {
-			System.out.println(StrUt.digestString(user.userPass));
+			System.out.println(StrUtil.digestString(user.userPass));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
