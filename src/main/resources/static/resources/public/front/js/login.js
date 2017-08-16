@@ -16,7 +16,6 @@ function loginChk() {
 			} else {
 
 				if(data.startsWith("http://")) {
-					alert("!")
 					redirect(data);
 				} else {
 					redirect("/" + data);
@@ -31,7 +30,6 @@ function loginChk() {
 			alert("server error" + status);
 		}
 	});
-
 }
 
 function regUser() {

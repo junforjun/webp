@@ -12,14 +12,14 @@
 
 	<title>My-B</title>
 
-	<script	src="/resources/public/front/js/common.js"></script>
-	<script	src="/resources/public/front/js/user_main.js"></script>
+	<script type="text/javascript" src="/resources/public/front/js/common.js"></script>
+	<script type="text/javascript" src="/resources/public/front/js/user_post.js"></script>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 	<link href="/resources/public/front/css/common.css" rel="stylesheet">
-	<link href="/resources/public/front/css/user_main.css" rel="stylesheet">
+	<link href="/resources/public/front/css/user_post.css" rel="stylesheet">
 
 </head>
 
@@ -48,45 +48,30 @@
 	</nav>
 
 
-
-
-
 	<!-- Marketing messaging and featurettes
 	================================================== -->
 	<!-- Wrap the rest of the page in another container to center all the content. -->
 
-	<div class="container marketing">
+	<div class="container">
 
 	  <!-- START THE FEATURETTES -->
 
 
 
-	  <hr class="featurette-divider">
 
-	  <div class="row featurette">
-		<div class="col-md-7 col-md-push-5">
-		  <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-		  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+<div th:each="post:${postList}">
+	  <div class="row">
+		<div class="col-sm-12">
+		  <h2 class="featurette" th:text="${post.postTitle}">post.postTitle</h2>
+		</div>
+		<div class="col-sm-12" th:utext="${post.contests}">post.contests
+
 
 		</div>
-		<div class="col-md-5 col-md-pull-7">
-		  <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-		</div>
+
 	  </div>
-
-	  <hr class="featurette-divider">
-
-	  <div class="row featurette">
-		<div class="col-md-7">
-		  <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-		  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-		</div>
-		<div class="col-md-5">
-		  <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-		</div>
-	  </div>
-
-	  <hr class="featurette-divider">
+	   <hr class="featurette-divider">
+</div>
 
 	  <!-- /END THE FEATURETTES -->
 	</div><!-- /.container -->
@@ -95,8 +80,8 @@
 	<footer th:include="commonTilesPart::footer"></footer>
 
 		<!-- Jquery/ Bootstrap -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	</body>
 </html>

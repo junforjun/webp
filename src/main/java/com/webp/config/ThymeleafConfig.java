@@ -20,6 +20,7 @@ public class ThymeleafConfig {
 	  templateResolver.setSuffix(".html");
 	  templateResolver.setTemplateMode("LEGACYHTML5");
 	  templateResolver.setCacheable(false);
+
 	  return templateResolver;
 	 }
 

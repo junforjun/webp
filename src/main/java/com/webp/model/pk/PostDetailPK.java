@@ -20,15 +20,7 @@ public class PostDetailPK implements Serializable {
 
 	public String categoryCode;
 
-	public String postNo;
-
-	public String createdUser;
-
-	public Timestamp createdTime;
-
-	public String editedUser;
-
-	public Timestamp editedTime;
+	public Integer postNo;
 
 	@Override
 	public int hashCode() {

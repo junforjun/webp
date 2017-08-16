@@ -48,47 +48,51 @@
 				<div th:include="commonTilesPart::header"></div>
 			</div>
 	</nav>
-
+<form>
 	<div class="container">
-			<div class="well carousel-search">
-				<div class="btn-group btn-block">
-					<div class="dropdown">
-						<label class="control-label" for="email">カテゴリ : </label>	 
-						<button class="btn btn-default dropdown-toggle " type="button" data-toggle="dropdown">
-							<span class="caret"></span>
-						</button>
-						 
-						<ul class="dropdown-menu">
-							<li th:each="category:${common.categoryList}">
-								<a href="#" class="category" th:text="${category.catecoryName}">categoryList.Name</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="btn-group btn-block">
-
-				</div>
-				<div id="map"></div>
-
-			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx8Vpd0HQOU577Ik8IrNHAa5YzI_Lw_ng&callback=initMap">
-
-			</script>
+		<div class="col col-sm-12">
+			<input type="text" id="title" class="form-control">
 		</div>
 
-		<hr>
+		<div class="col col-sm-1" >Category：</div>
+		<div class="col col-sm-11">
+
+				<select id="category" name="cars" th:each="category:${common.categoryList}">
+					<option th:attr="value=${category.categoryCode}">
+						<span th:text="${category.catecoryName}">
+							categoryList.Name
+						</span>
+					</option>
+				</select>
+
+			</div>
+
+		<div class="col-sm12">
+			<input type="checkbox" id="mapCheck"> 位置データを含めます。
+
+			<div style="display:none;" id="mapDiv">
+				<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+				<div id="map"></div>
+
+			</div>
+		</div>
 	</div>
 
+</form>
+
+
+
+	<hr>
 
 	<div class="container" >
-		<textarea></textarea>
+		<textarea id="contents"></textarea>
 	</div>
 
 	<div class="container text-right">
 	<hr>
-		<button class="btn btn-lg btn-primary" onclick="">下書き</button>
-		<button class="btn btn-lg btn-info" onclick="">全員に公開</button>
-		<button class="btn btn-lg btn-info" onclick="">友達限定公開</button>
+		<button class="btn btn-lg btn-primary" onclick="writePost('1')">下書き</button>
+		<button class="btn btn-lg btn-info" onclick="writePost('2')">全員に公開</button>
+		<button class="btn btn-lg btn-info" onclick="writePost('3')">友達限定公開</button>
 	</div>
 
 	<footer th:include="commonTilesPart::footer"></footer>

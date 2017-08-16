@@ -36,7 +36,4 @@ public class webp {
 		filter.setForceEncoding(true);
 		return filter;
 	}
-
-
-
 }

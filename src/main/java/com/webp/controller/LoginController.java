@@ -77,7 +77,7 @@ public class LoginController {
 
 		model.addAttribute("AuthenticationToken", new Gson().toJson(
 				new AuthenticationToken(user.userId, userService.getAuthorities(user.userId), session.getId())));
-
+		session.setAttribute("url", user.urlId);
 
 		String referrer = (String)session.getAttribute("prevPage");
 

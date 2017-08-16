@@ -18,9 +18,9 @@ import com.webp.model.UserInfo;
 import com.webp.service.model.service.common.ApiResponse;
 
 @Service
-public class ViewUserBlogService {
+public class GetCommonInfoService {
 
-	private static final Logger logger = LoggerFactory.getLogger(ViewUserBlogService.class);
+	private static final Logger logger = LoggerFactory.getLogger(GetCommonInfoService.class);
 
 	@Autowired
 	private EntityManager em;
@@ -28,8 +28,13 @@ public class ViewUserBlogService {
 	@Autowired
 	private UserService userService;
 
-	public ApiResponse getCommonMenu(String url, HttpSession session) {
+	public ApiResponse getCommonMenu(HttpSession session) {
 
+		String url = (String) session.getAttribute("url");
+		return getCommonMenu(url, session);
+	}
+
+	public ApiResponse getCommonMenu(String url, HttpSession session) {
 		System.out.println("Requested Page : " + url);
 
 		ApiResponse response = new ApiResponse();

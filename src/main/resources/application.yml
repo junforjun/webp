@@ -8,6 +8,7 @@ spring:
     encoding:
       force: true
       charset: UTF-8
+   
 
 mail:
   store:
@@ -18,7 +19,7 @@ mail:
     starttls:
       enable: true
 
-debug: true
+debug: false
 banner:
   location:banner.txt
 

@@ -110,12 +110,4 @@ function redirect(url) {
 	}
 }
 
-$(function() {
-	$("#write").click(function() {
-		$('div.modal').modal({
-			remote : '../modal/write.html'
-		});
-	})
-})
-
 
