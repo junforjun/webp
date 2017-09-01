@@ -19,9 +19,10 @@
 }
 
 .siteTitle {
-	color: #FF00FF;
-	size: 15px;
+	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 15pt;
 }
+
 
 @-ms-viewport     { width: device-width; }
 @-o-viewport      { width: device-width; }
@@ -162,3 +163,22 @@ body {
     margin-top: 120px;
   }
 }
+@font-face {
+  font-family: 'Gloria Hallelujah';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gloria Hallelujah'), local('GloriaHallelujah'), url(https://fonts.gstatic.com/s/gloriahallelujah/v8/CA1k7SlXcY5kvI81M_R28cNDay8z-hHR7F16xrcXsJw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+.header {
+	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 15pt;
+	border: 1px solid gold;
+	float: left;
+	width: 33%;
+}
+
+
+
+

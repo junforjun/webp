@@ -12,21 +12,27 @@
 
 	<title>My-B</title>
 
-	<script	src="/resources/public/front/js/common.js"></script>
-	<script	src="/resources/public/front/js/user_main.js"></script>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-	<link href="/resources/public/front/css/common.css" rel="stylesheet">
-	<link href="/resources/public/front/css/user_main.css" rel="stylesheet">
+<!-- bootstrap -->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- Js -->
+	<script type="text/javascript" src="/resources/public/front/js/common.js"></script>
+	<script type="text/javascript" src="/resources/public/front/js/user_main.js"></script>
+
+
+<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/public/front/css/common.css">
+	<link rel="stylesheet" href="/resources/public/front/css/user_main.css" >
 
 </head>
 
 <body>
-
+<nav th:include="commonTilesPart::upperHeader"></nav>
 	<!-- NAVBAR ================================================== -->
-	<div class="jumbotron jumbotron-fluid" style="margin-bottom:0px;background-image: url('/img/main.jpg')">
+	<div class="jumbotron jumbotron-fluid" style="margin-bottom:0px;background-image: url('/resources/public/front/img/main.jpg')">
 		<div class="container" >
 
 			<!-- ■■■■ブログタイトル ■■■■-->
@@ -40,16 +46,11 @@
 			</p>
 		</div>
 	</div>
-
 	<nav class="navbar navbar-inverse navbar-static-top">
 			<div class="container">
 				<div th:include="commonTilesPart::header"></div>
 			</div>
 	</nav>
-
-
-
-
 
 	<!-- Marketing messaging and featurettes
 	================================================== -->
@@ -58,9 +59,6 @@
 	<div class="container marketing">
 
 	  <!-- START THE FEATURETTES -->
-
-
-
 	  <hr class="featurette-divider">
 
 	  <div class="row featurette">

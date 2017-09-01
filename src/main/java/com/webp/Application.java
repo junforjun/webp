@@ -22,10 +22,10 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @ComponentScan
 @EnableAutoConfiguration
 @EnableJpaRepositories
-public class webp {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(webp.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 	@Order(Ordered.HIGHEST_PRECEDENCE)

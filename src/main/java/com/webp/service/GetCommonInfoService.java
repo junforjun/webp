@@ -38,25 +38,29 @@ public class GetCommonInfoService {
 		System.out.println("Requested Page : " + url);
 
 		ApiResponse response = new ApiResponse();
-		UserInfo user = userService.readUserFromUrl(url);
-
-		if (user == null) {
-			response.noUser = "1";
-			logger.debug("url not found : " + url);
-			return response;
-		}
+		UserInfo user = new UserInfo();
 
 
 		SecurityContext con = (SecurityContext)session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
 
 		if(con != null) {
 			System.out.println(con.getAuthentication().getName() + ": Logined");
+			user = userService.readUser(con.getAuthentication().getName());
 			response.isLogin = "1";
 
 			if(user.userId.equals(con.getAuthentication().getName())) {
 				response.isMine = "1";
 			}
+		} else {
+			user = userService.readUserFromUrl(url);
+
+			if (user == null) {
+				response.noUser = "1";
+				logger.debug("url not found : " + url);
+				return response;
+			}
 		}
+
 		response.url = url;
 		response.title = user.blogTitle;
 		response.subTitle = user.blogSubTitle;

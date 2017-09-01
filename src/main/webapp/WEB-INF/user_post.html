@@ -9,16 +9,18 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-
 	<title>My-B</title>
+<!-- bootstrap -->
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<!-- Js -->
 	<script type="text/javascript" src="/resources/public/front/js/common.js"></script>
 	<script type="text/javascript" src="/resources/public/front/js/user_post.js"></script>
 
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-	<link href="/resources/public/front/css/common.css" rel="stylesheet">
+<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/public/front/css/common.css">
 	<link href="/resources/public/front/css/user_post.css" rel="stylesheet">
 
 </head>
@@ -26,7 +28,7 @@
 <body>
 
 	<!-- NAVBAR ================================================== -->
-	<div class="jumbotron jumbotron-fluid" style="margin-bottom:0px;background-image: url('/img/main.jpg')">
+	<div class="jumbotron jumbotron-fluid" style="margin-bottom:0px;background-image: url('/resources/public/front/img/main.jpg')">
 		<div class="container" >
 
 			<!-- ■■■■ブログタイトル ■■■■-->
@@ -56,17 +58,12 @@
 
 	  <!-- START THE FEATURETTES -->
 
-
-
-
 <div th:each="post:${postList}">
 	  <div class="row">
 		<div class="col-sm-12">
 		  <h2 class="featurette" th:text="${post.postTitle}">post.postTitle</h2>
 		</div>
 		<div class="col-sm-12" th:utext="${post.contests}">post.contests
-
-
 		</div>
 
 	  </div>
@@ -78,10 +75,5 @@
 
 
 	<footer th:include="commonTilesPart::footer"></footer>
-
-		<!-- Jquery/ Bootstrap -->
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 	</body>
 </html>
