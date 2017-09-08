@@ -9,14 +9,13 @@
 			<!-- ★Title★ -->
 			<a class="navbar-brand siteTitle" href="/">My-B.ME</a>
 		</div>
-		<ul class="nav navbar-nav">
-			<li th:if="${common != null}">
+		<ul class="nav navbar-nav" th:if="${common != null  and common.isLogin == '1'}">
+			<li>
 				<a href="#"><span class="network-name">MYブログへ</span></a>
 			</li>
-			<li class="dropdown" th:if="${common != null}">
+			<li>
 				<a href="#"><span class="network-name">会員メニュー</span></a>
 			</li>
-
 		</ul>
 		<!-- ★検索テキストボックスと検索ボタン★ -->
 		<form class="navbar-form navbar-right">

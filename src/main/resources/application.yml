@@ -8,7 +8,7 @@ spring:
     encoding:
       force: true
       charset: UTF-8
-   
+
 
 mail:
   store:
