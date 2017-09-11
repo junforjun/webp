@@ -29,7 +29,9 @@ import com.webp.model.db.UserAuthentication_DB;
 import com.webp.model.db.UserDetail_DB;
 import com.webp.model.db.UserInfo_DB;
 import com.webp.service.UserService;
+import com.webp.service.model.userCreate.UserCreateRequest;
 import com.webp.util.StrUtil;
+import com.webp.util.TimeUtil;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -133,16 +135,28 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void createUser(UserInfo user) {
-		user.userPass = passwordEncoder().encode(user.userPass);
+	public void createUser(UserCreateRequest request) {
+		UserInfo user = new UserInfo();
+		user.userId = request.userId;
+		user.firstName = request.firstName;
+		user.lastName = request.lastName;
+		user.sex = request.sex;
+		user.userPass = passwordEncoder().encode(request.userPass);
 		user.isVerificationed = "1";
+		user.createdTime = TimeUtil.getCurrentTimeStamp();
+		user.createdUser = request.userId;
 		userInfoDb.save(user);
 
-		UserDetail UserDetail = new UserDetail();
-		UserDetail.blogTitle = "まだ設定されていません。";
-		UserDetail.blogSubTitle = "";
-		UserDetail.infoOpenLevel = "1";
-		userDetailDB.save(UserDetail);
+		UserDetail userDetail = new UserDetail();
+		userDetail.userId = request.userId;
+		userDetail.userNick = request.userNick;
+		userDetail.urlId = request.urlId;
+		userDetail.blogTitle = "まだ設定されていません。";
+		userDetail.blogSubTitle = "";
+		userDetail.infoOpenLevel = "1";
+		userDetail.createdTime = TimeUtil.getCurrentTimeStamp();
+		userDetail.createdUser = request.userId;
+		userDetailDB.save(userDetail);
 
 		// TODO メニュー設定必要
 //		MenuMaster menu = new MenuMaster();

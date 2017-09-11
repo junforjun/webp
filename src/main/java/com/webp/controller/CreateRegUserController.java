@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.webp.model.UserInfo;
 import com.webp.service.UserService;
+import com.webp.service.model.userCreate.UserCreateRequest;
+import com.webp.util.Log;
 
 @Controller
 public class CreateRegUserController {
@@ -29,10 +30,10 @@ public class CreateRegUserController {
 
 	@RequestMapping(value = "/user/regUser", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String createUser(UserInfo userInfo, HttpSession session) {
-
-		System.out.println(userInfo.toString());
-		userService.createUser(userInfo);
+	public String createUser(UserCreateRequest request, HttpSession session) {
+		Log.vipLog(request.toString());
+		// 重複検査を行うこと。TODO
+		userService.createUser(request);
 
 		return "1";
 	}

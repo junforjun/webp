@@ -16,4 +16,10 @@ public class Log {
 	public static void info(String message) {
 		logger.info(message);
 	}
+
+	public static void vipLog(String message) {
+		logger.info("◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆");
+		logger.info(message);
+		logger.info("◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆");
+	}
 }
