@@ -22,14 +22,6 @@ public class PostDetailPK implements Serializable {
 
 	public Integer postNo;
 
-	public String createdUser;
-
-	public Timestamp createdTime;
-
-	public String editedUser;
-
-	public Timestamp editedTime;
-
 	@Override
 	public int hashCode() {
 	    return super.hashCode();

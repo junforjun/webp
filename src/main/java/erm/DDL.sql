@@ -74,10 +74,11 @@ CREATE TABLE post_detail (
 	created_user VARCHAR(255), 
 	created_time TIMESTAMP, 
 	edited_user VARCHAR(255), 
-	edited_time TIMESTAMP
+	edited_time TIMESTAMP, 
+	hidden_flag VARCHAR(1)
 );
 
-ALTER TABLE post_detail ADD CONSTRAINT IDX_post_detail_PK PRIMARY KEY (user_id, category_code, post_no, created_user, created_time, edited_user, edited_time);
+ALTER TABLE post_detail ADD CONSTRAINT IDX_post_detail_PK PRIMARY KEY (user_id, category_code, post_no);
 
 COMMENT ON TABLE post_detail IS  'ポスト管理';
 COMMENT ON COLUMN post_detail.user_id IS 'ユーザID';
@@ -93,6 +94,7 @@ COMMENT ON COLUMN post_detail.created_user IS '生成ユーザID';
 COMMENT ON COLUMN post_detail.created_time IS '生成時間';
 COMMENT ON COLUMN post_detail.edited_user IS '修正ユーザID';
 COMMENT ON COLUMN post_detail.edited_time IS '修正時間';
+COMMENT ON COLUMN post_detail.hidden_flag IS '非活性フラグ';
 
 
 

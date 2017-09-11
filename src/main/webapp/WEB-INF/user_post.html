@@ -17,11 +17,15 @@
 <!-- Js -->
 	<script type="text/javascript" src="/resources/public/front/js/common.js"></script>
 	<script type="text/javascript" src="/resources/public/front/js/user_post.js"></script>
+	<script type="text/javascript" src="/resources/public/front/js/prism.js"></script>
+
 
 <!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/resources/public/front/css/common.css">
 	<link href="/resources/public/front/css/user_post.css" rel="stylesheet">
+	<link href="/resources/public/front/css/prism.css" rel="stylesheet" />
+
 
 </head>
 
@@ -63,7 +67,7 @@
 		<div class="col-sm-12">
 		  <h2 class="featurette" th:text="${post.postTitle}">post.postTitle</h2>
 		</div>
-		<div class="col-sm-12" th:utext="${post.contests}">post.contests
+		<div class="col-sm-12" th:utext="${post.contents}">post.contests
 		</div>
 
 	  </div>
@@ -75,5 +79,6 @@
 
 
 	<footer th:include="commonTilesPart::footer"></footer>
+
 	</body>
 </html>

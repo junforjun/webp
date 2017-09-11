@@ -61,23 +61,23 @@ public class PostDetail implements Serializable {
 	public String contents;
 
 	/** 生成ユーザID */
-	@Id
 	@Column(name = "CREATED_USER")
 	public String createdUser;
 
 	/** 生成時間 */
-	@Id
 	@Column(name = "CREATED_TIME")
 	public Timestamp createdTime;
 
 	/** 修正ユーザID */
-	@Id
 	@Column(name = "EDITED_USER")
 	public String editedUser;
 
 	/** 修正時間 */
-	@Id
 	@Column(name = "EDITED_TIME")
 	public Timestamp editedTime;
+
+	/** 非活性フラグ */
+	@Column(name = "HIDDEN_FLAG", nullable = false)
+	public String hiddenFlag;
 
 }
