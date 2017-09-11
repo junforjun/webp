@@ -2,12 +2,12 @@ package com.webp.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.Table;
+import javax.persistence.IdClass;
+import javax.persistence.Id;
 
 import com.webp.model.pk.PostDetailPK;
 /**
@@ -44,10 +44,6 @@ public class PostDetail implements Serializable {
 	@Column(name = "POST_SUB_TITLE")
 	public String postSubTitle;
 
-	/** contents */
-	@Column(name = "CONTESTS", nullable = false)
-	public String contests;
-
 	/** 整列順番 */
 	@Column(name = "DISPLAY_ORDER")
 	public String displayOrder;
@@ -60,37 +56,28 @@ public class PostDetail implements Serializable {
 	@Column(name = "FILE_INFO_FLAG")
 	public String fileInfoFlag;
 
+	/** コンテンツ */
+	@Column(name = "CONTENTS")
+	public String contents;
+
 	/** 生成ユーザID */
-	@Column(name = "CREATED_USER", nullable = false)
+	@Id
+	@Column(name = "CREATED_USER")
 	public String createdUser;
 
 	/** 生成時間 */
-	@Column(name = "CREATED_TIME", nullable = false)
+	@Id
+	@Column(name = "CREATED_TIME")
 	public Timestamp createdTime;
 
 	/** 修正ユーザID */
+	@Id
 	@Column(name = "EDITED_USER")
 	public String editedUser;
 
 	/** 修正時間 */
+	@Id
 	@Column(name = "EDITED_TIME")
 	public Timestamp editedTime;
-
-	@Override
-	public String toString() {
-		return "PostDetail [" + (userId != null ? "userId=" + userId + "\r\n " : "")
-				+ (categoryCode != null ? "categoryCode=" + categoryCode + "\r\n " : "")
-				+ (postNo != null ? "postNo=" + postNo + "\r\n " : "")
-				+ (postTitle != null ? "postTitle=" + postTitle + "\r\n " : "")
-				+ (postSubTitle != null ? "postSubTitle=" + postSubTitle + "\r\n " : "")
-				+ (contests != null ? "contests=" + contests + "\r\n " : "")
-				+ (displayOrder != null ? "displayOrder=" + displayOrder + "\r\n " : "")
-				+ (mapInfoFlag != null ? "mapInfoFlag=" + mapInfoFlag + "\r\n " : "")
-				+ (fileInfoFlag != null ? "fileInfoFlag=" + fileInfoFlag + "\r\n " : "")
-				+ (createdUser != null ? "createdUser=" + createdUser + "\r\n " : "")
-				+ (createdTime != null ? "createdTime=" + createdTime + "\r\n " : "")
-				+ (editedUser != null ? "editedUser=" + editedUser + "\r\n " : "")
-				+ (editedTime != null ? "editedTime=" + editedTime : "") + "]";
-	}
 
 }

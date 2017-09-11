@@ -38,7 +38,7 @@ DROP TABLE IF EXISTS category_detail;
 
 CREATE TABLE category_detail (
 	user_id VARCHAR(255), 
-	category_code VARCHAR(10), 
+	category_code VARCHAR(5), 
 	catecory_name VARCHAR(255), 
 	parents_category_code VARCHAR(10), 
 	font_bold_flag VARCHAR(1), 
@@ -63,17 +63,18 @@ DROP TABLE IF EXISTS post_detail;
 
 CREATE TABLE post_detail (
 	user_id VARCHAR(255), 
-	category_code VARCHAR(10), 
-	post_no VARCHAR(10), 
+	category_code VARCHAR(5), 
+	post_no INTEGER, 
 	post_title VARCHAR(500), 
 	post_sub_title VARCHAR(500), 
 	display_order VARCHAR(3), 
+	map_info_flag VARCHAR(1), 
+	file_info_flag VARCHAR(1), 
+	contents VARCHAR, 
 	created_user VARCHAR(255), 
 	created_time TIMESTAMP, 
 	edited_user VARCHAR(255), 
-	edited_time TIMESTAMP, 
-	map_info_flag VARCHAR(1), 
-	file_info_flag VARCHAR(1)
+	edited_time TIMESTAMP
 );
 
 ALTER TABLE post_detail ADD CONSTRAINT IDX_post_detail_PK PRIMARY KEY (user_id, category_code, post_no, created_user, created_time, edited_user, edited_time);
@@ -85,12 +86,13 @@ COMMENT ON COLUMN post_detail.post_no IS 'ポスト番号';
 COMMENT ON COLUMN post_detail.post_title IS 'ポストタイトル';
 COMMENT ON COLUMN post_detail.post_sub_title IS 'ポストサブタイトル';
 COMMENT ON COLUMN post_detail.display_order IS '整列順番';
+COMMENT ON COLUMN post_detail.map_info_flag IS 'Googleマップ情報ありフラグ';
+COMMENT ON COLUMN post_detail.file_info_flag IS 'ファイル情報ありフラグ';
+COMMENT ON COLUMN post_detail.contents IS 'コンテンツ';
 COMMENT ON COLUMN post_detail.created_user IS '生成ユーザID';
 COMMENT ON COLUMN post_detail.created_time IS '生成時間';
 COMMENT ON COLUMN post_detail.edited_user IS '修正ユーザID';
 COMMENT ON COLUMN post_detail.edited_time IS '修正時間';
-COMMENT ON COLUMN post_detail.map_info_flag IS 'Googleマップ情報ありフラグ';
-COMMENT ON COLUMN post_detail.file_info_flag IS 'ファイル情報ありフラグ';
 
 
 
@@ -160,16 +162,16 @@ COMMENT ON COLUMN imoji_master.hidden_flag IS '非活性フラグ';
 DROP TABLE IF EXISTS reply;
 
 CREATE TABLE reply (
-	user_id VARCHAR, 
-	category_code VARCHAR, 
-	post_no VARCHAR, 
-	reply_code VARCHAR, 
-	parents_reply_code VARCHAR, 
+	user_id VARCHAR(255), 
+	category_code VARCHAR(5), 
+	post_no VARCHAR(10), 
+	reply_code VARCHAR(10), 
+	parents_reply_code VARCHAR(10), 
 	contents VARCHAR(1000), 
-	file_info_flag VARCHAR, 
-	created_user VARCHAR, 
+	file_info_flag VARCHAR(1), 
+	created_user VARCHAR(255), 
 	created_time TIMESTAMP, 
-	edited_user VARCHAR, 
+	edited_user VARCHAR(255), 
 	edited_time TIMESTAMP, 
 	hidden_flag VARCHAR(1)
 );
@@ -197,37 +199,78 @@ DROP TABLE IF EXISTS user_info;
 CREATE TABLE user_info (
 	user_id VARCHAR(255), 
 	user_pass VARCHAR(255), 
-	url_id VARCHAR(255), 
-	user_nick VARCHAR(255), 
+	sex VARCHAR(1), 
 	first_name VARCHAR(100), 
 	last_name VARCHAR(100), 
 	is_verificationed VARCHAR(1), 
-	sex VARCHAR(1), 
 	post_code VARCHAR(10), 
-	avatar_file_loc VARCHAR, 
-	self_introduce_text VARCHAR, 
-	address1 VARCHAR, 
-	address2 VARCHAR, 
-	info_open_level VARCHAR(1)
+	address1 VARCHAR(255), 
+	address2 VARCHAR(255), 
+	avatar_file_loc VARCHAR(255), 
+	self_introduce_text VARCHAR(1000), 
+	hidden_flag VARCHAR(1), 
+	created_user VARCHAR(255), 
+	created_time TIMESTAMP, 
+	edited_user VARCHAR(255), 
+	edited_time TIMESTAMP
 );
 
 ALTER TABLE user_info ADD CONSTRAINT IDX_user_info_PK PRIMARY KEY (user_id);
 
-COMMENT ON TABLE user_info IS  'ユーザ詳細';
+COMMENT ON TABLE user_info IS  'ユーザ情報';
 COMMENT ON COLUMN user_info.user_id IS 'ユーザID';
 COMMENT ON COLUMN user_info.user_pass IS 'ユーザパスワード';
-COMMENT ON COLUMN user_info.url_id IS 'ユーザブログURL';
-COMMENT ON COLUMN user_info.user_nick IS 'ユーザニックネーム';
+COMMENT ON COLUMN user_info.sex IS '性別';
 COMMENT ON COLUMN user_info.first_name IS '性';
 COMMENT ON COLUMN user_info.last_name IS '名';
 COMMENT ON COLUMN user_info.is_verificationed IS '認証済みフラグ';
-COMMENT ON COLUMN user_info.sex IS '性別';
 COMMENT ON COLUMN user_info.post_code IS '郵便番号';
-COMMENT ON COLUMN user_info.avatar_file_loc IS 'プロファイル画像';
-COMMENT ON COLUMN user_info.self_introduce_text IS 'プロファイル文言';
 COMMENT ON COLUMN user_info.address1 IS '住所１';
 COMMENT ON COLUMN user_info.address2 IS '住所２';
-COMMENT ON COLUMN user_info.info_open_level IS '情報公開レベル';
+COMMENT ON COLUMN user_info.avatar_file_loc IS 'プロファイル画像';
+COMMENT ON COLUMN user_info.self_introduce_text IS 'プロファイル文言';
+COMMENT ON COLUMN user_info.hidden_flag IS '非活性フラグ';
+COMMENT ON COLUMN user_info.created_user IS '生成ユーザID';
+COMMENT ON COLUMN user_info.created_time IS '生成時間';
+COMMENT ON COLUMN user_info.edited_user IS '修正ユーザID';
+COMMENT ON COLUMN user_info.edited_time IS '修正時間';
+
+
+
+DROP TABLE IF EXISTS user_detail;
+
+CREATE TABLE user_detail (
+	user_id VARCHAR(255), 
+	user_nick VARCHAR(255), 
+	url_id VARCHAR(255), 
+	blog_title VARCHAR(50), 
+	blog_sub_title VARCHAR(255), 
+	avatar_file_loc VARCHAR(255), 
+	info_open_level VARCHAR(1), 
+	self_introduce_text VARCHAR(1000), 
+	hidden_flag VARCHAR(1), 
+	created_user VARCHAR(255), 
+	created_time TIMESTAMP, 
+	edited_user VARCHAR(255), 
+	edited_time TIMESTAMP
+);
+
+ALTER TABLE user_detail ADD CONSTRAINT IDX_user_detail_PK PRIMARY KEY (user_id);
+
+COMMENT ON TABLE user_detail IS  'ユーザ詳細';
+COMMENT ON COLUMN user_detail.user_id IS 'ユーザID';
+COMMENT ON COLUMN user_detail.user_nick IS 'ユーザニックネーム';
+COMMENT ON COLUMN user_detail.url_id IS 'ユーザブログURL';
+COMMENT ON COLUMN user_detail.blog_title IS 'ブログタイトル';
+COMMENT ON COLUMN user_detail.blog_sub_title IS 'ブログサブタイトル';
+COMMENT ON COLUMN user_detail.avatar_file_loc IS 'プロファイル画像';
+COMMENT ON COLUMN user_detail.info_open_level IS '情報公開レベル';
+COMMENT ON COLUMN user_detail.self_introduce_text IS 'プロファイル文言';
+COMMENT ON COLUMN user_detail.hidden_flag IS '非活性フラグ';
+COMMENT ON COLUMN user_detail.created_user IS '生成ユーザID';
+COMMENT ON COLUMN user_detail.created_time IS '生成時間';
+COMMENT ON COLUMN user_detail.edited_user IS '修正ユーザID';
+COMMENT ON COLUMN user_detail.edited_time IS '修正時間';
 
 
 
@@ -261,7 +304,7 @@ CREATE TABLE user_hobby (
 	hobby_code VARCHAR(2)
 );
 
-ALTER TABLE user_hobby ADD CONSTRAINT IDX_user_hobby_PK PRIMARY KEY (user_id);
+ALTER TABLE user_hobby ADD CONSTRAINT IDX_user_hobby_PK PRIMARY KEY (user_id, hobby_code);
 
 COMMENT ON TABLE user_hobby IS  'ユーザ趣味';
 COMMENT ON COLUMN user_hobby.user_id IS 'ユーザID';
@@ -276,32 +319,11 @@ CREATE TABLE user_interest (
 	interest_code VARCHAR(2)
 );
 
-ALTER TABLE user_interest ADD CONSTRAINT IDX_user_interest_PK PRIMARY KEY (user_id);
+ALTER TABLE user_interest ADD CONSTRAINT IDX_user_interest_PK PRIMARY KEY (user_id, interest_code);
 
 COMMENT ON TABLE user_interest IS  'ユーザ興味';
 COMMENT ON COLUMN user_interest.user_id IS 'ユーザID';
 COMMENT ON COLUMN user_interest.interest_code IS '興味コード';
-
-
-
-DROP TABLE IF EXISTS user_nick;
-
-CREATE TABLE user_nick (
-	user_id VARCHAR(255), 
-	user_nick VARCHAR(255), 
-	hidden_flag VARCHAR(1), 
-	created_user VARCHAR(255), 
-	created_time TIMESTAMP
-);
-
-ALTER TABLE user_nick ADD CONSTRAINT IDX_user_nick_PK PRIMARY KEY (user_id, created_time);
-
-COMMENT ON TABLE user_nick IS  'ユーザニックネーム';
-COMMENT ON COLUMN user_nick.user_id IS 'ユーザID';
-COMMENT ON COLUMN user_nick.user_nick IS 'ユーザニックネーム';
-COMMENT ON COLUMN user_nick.hidden_flag IS '削除フラグ';
-COMMENT ON COLUMN user_nick.created_user IS '生成ユーザ';
-COMMENT ON COLUMN user_nick.created_time IS '生成時間';
 
 
 

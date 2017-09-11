@@ -49,7 +49,7 @@ public class WriteUserBlogService {
 		post.postNo = getNextPostNo(userId, request.categoryCode);
 		post.createdUser = userId;
 		post.createdTime = TimeUtil.getCurrentTimeStamp();
-		post.contests = request.contents;
+		post.contents = request.contents;
 
 		Log.debug(post.toString());
 

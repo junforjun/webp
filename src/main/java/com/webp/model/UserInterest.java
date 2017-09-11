@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.IdClass;
+import javax.persistence.Id;
+
+import com.webp.model.pk.UserInterestPK;
 /**
  * MODEL autogen macro
  * UserInterest
@@ -14,6 +17,7 @@ import javax.persistence.IdClass;
 */
 @Entity
 @Table(name="USER_INTEREST")
+@IdClass(value = UserInterestPK.class)
 public class UserInterest implements Serializable {
 	public static final String TABLE = "USER_INTEREST";
 
@@ -23,6 +27,7 @@ public class UserInterest implements Serializable {
 	public String userId;
 
 	/** 興味コード */
+	@Id
 	@Column(name = "INTEREST_CODE")
 	public String interestCode;
 

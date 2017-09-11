@@ -8,27 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-import com.webp.model.PostDetail;
+import com.webp.model.UserInterest;
 
 /**
  * PK MODEL Class autogen macro
- * PostDetail
+ * UserInterest
  * @auther KIM
 */
-public class PostDetailPK implements Serializable {
+public class UserInterestPK implements Serializable {
 	public String userId;
 
-	public String categoryCode;
-
-	public Integer postNo;
-
-	public String createdUser;
-
-	public Timestamp createdTime;
-
-	public String editedUser;
-
-	public Timestamp editedTime;
+	public String interestCode;
 
 	@Override
 	public int hashCode() {

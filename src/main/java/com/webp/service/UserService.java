@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.webp.model.UserDetail;
 import com.webp.model.UserInfo;
 
 @Service
@@ -16,8 +17,6 @@ public interface UserService extends UserDetailsService {
 
 	public UserInfo readUser(String username);
 
-	public UserInfo readUserFromUrl(String url);
-
 	public void createUser(UserInfo user);
 
 	public int validateUser(UserInfo user);
@@ -25,4 +24,7 @@ public interface UserService extends UserDetailsService {
 	public void deleteUser(String username);
 
 	public PasswordEncoder passwordEncoder();
+
+	public UserDetail readUserFromUrl(String url) ;
+	public UserDetail readUserFromId(String id) ;
 }

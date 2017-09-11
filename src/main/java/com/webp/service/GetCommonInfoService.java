@@ -14,7 +14,7 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.stereotype.Service;
 
 import com.mysema.query.jpa.impl.JPAQuery;
-import com.webp.model.UserInfo;
+import com.webp.model.UserDetail;
 import com.webp.service.model.service.common.ApiResponse;
 
 @Service
@@ -38,14 +38,14 @@ public class GetCommonInfoService {
 		System.out.println("Requested Page : " + url);
 
 		ApiResponse response = new ApiResponse();
-		UserInfo user = new UserInfo();
+		UserDetail user = new UserDetail();
 
 
 		SecurityContext con = (SecurityContext)session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
 
 		if(con != null) {
 			System.out.println(con.getAuthentication().getName() + ": Logined");
-			user = userService.readUser(con.getAuthentication().getName());
+			user = userService.readUserFromId(con.getAuthentication().getName());
 			response.isLogin = "1";
 
 			if(user.userId.equals(con.getAuthentication().getName())) {
@@ -53,7 +53,6 @@ public class GetCommonInfoService {
 			}
 		} else {
 			user = userService.readUserFromUrl(url);
-
 			if (user == null) {
 				response.noUser = "1";
 				logger.debug("url not found : " + url);

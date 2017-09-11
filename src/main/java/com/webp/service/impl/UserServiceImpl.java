@@ -1,5 +1,6 @@
 package com.webp.service.impl;
 
+import static com.webp.model.QUserDetail.*;
 import static com.webp.model.QUserInfo.*;
 
 import java.util.Collection;
@@ -21,9 +22,11 @@ import com.webp.model.CategoryDetail;
 import com.webp.model.Login;
 import com.webp.model.QUserAuthentication;
 import com.webp.model.UserAuthentication;
+import com.webp.model.UserDetail;
 import com.webp.model.UserInfo;
 import com.webp.model.db.CategoryDetail_DB;
 import com.webp.model.db.UserAuthentication_DB;
+import com.webp.model.db.UserDetail_DB;
 import com.webp.model.db.UserInfo_DB;
 import com.webp.service.UserService;
 import com.webp.util.StrUtil;
@@ -38,6 +41,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserInfo_DB userInfoDb;
+
+	@Autowired
+	private UserDetail_DB userDetailDB;
 
 	@Autowired
 	private CategoryDetail_DB categoryDetail_DB;
@@ -91,11 +97,29 @@ public class UserServiceImpl implements UserService {
 		return new JPAQuery(em).from(userInfo).where(userInfo.userId.eq(username))
 				.uniqueResult(userInfo);
 	}
-
 	@Override
-	public UserInfo readUserFromUrl(String url) {
-		return new JPAQuery(em).from(userInfo).where(userInfo.urlId.eq(url).and(userInfo.isVerificationed.eq("1")))
-				.uniqueResult(userInfo);
+	public UserDetail readUserFromUrl(String url) {
+		UserDetail userdetail = new JPAQuery(em).from(userDetail)
+									.where(userDetail.urlId.eq(url))
+									.singleResult(userDetail);
+
+		if(userdetail == null || StrUtil.isEmpty(userdetail.userId)) {
+			return null;
+		}
+
+		return userdetail;
+	}
+	@Override
+	public UserDetail readUserFromId(String id) {
+		UserDetail userdetail = new JPAQuery(em).from(userDetail)
+									.where(userDetail.userId.eq(id))
+									.singleResult(userDetail);
+
+		if(userdetail == null || StrUtil.isEmpty(userdetail.userId)) {
+			return null;
+		}
+
+		return userdetail;
 	}
 
 	@Override
@@ -111,14 +135,14 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public void createUser(UserInfo user) {
 		user.userPass = passwordEncoder().encode(user.userPass);
-		user.blogTitle = "まだ設定されていません。";
-		user.blogSubTitle = "";
-
-		user.infoOpenLevel = "1";
 		user.isVerificationed = "1";
-
 		userInfoDb.save(user);
 
+		UserDetail UserDetail = new UserDetail();
+		UserDetail.blogTitle = "まだ設定されていません。";
+		UserDetail.blogSubTitle = "";
+		UserDetail.infoOpenLevel = "1";
+		userDetailDB.save(UserDetail);
 
 		// TODO メニュー設定必要
 //		MenuMaster menu = new MenuMaster();
@@ -127,11 +151,8 @@ public class UserServiceImpl implements UserService {
 
 		category.catecoryName = "基本カテゴリ";
 		category.categoryCode = "0";
-
 		category.userId = user.userId;
-
 		category.topCategoryFlag = "1";
-
 		categoryDetail_DB.save(category);
 	}
 

@@ -9,54 +9,42 @@ import javax.persistence.Table;
 import javax.persistence.IdClass;
 /**
  * MODEL autogen macro
- * UserInfo
+ * UserDetail
  * @auther KIM
 */
 @Entity
-@Table(name="USER_INFO")
-public class UserInfo implements Serializable {
-	public static final String TABLE = "USER_INFO";
+@Table(name="USER_DETAIL")
+public class UserDetail implements Serializable {
+	public static final String TABLE = "USER_DETAIL";
 
 	/** ユーザID */
 	@Id
 	@Column(name = "USER_ID")
 	public String userId;
 
-	/** ユーザパスワード */
-	@Column(name = "USER_PASS", nullable = false)
-	public String userPass;
+	/** ユーザニックネーム */
+	@Column(name = "USER_NICK", nullable = false)
+	public String userNick;
 
-	/** 性別 */
-	@Column(name = "SEX")
-	public String sex;
+	/** ユーザブログURL */
+	@Column(name = "URL_ID", nullable = false)
+	public String urlId;
 
-	/** 性 */
-	@Column(name = "FIRST_NAME", nullable = false)
-	public String firstName;
+	/** ブログタイトル */
+	@Column(name = "BLOG_TITLE")
+	public String blogTitle;
 
-	/** 名 */
-	@Column(name = "LAST_NAME", nullable = false)
-	public String lastName;
-
-	/** 認証済みフラグ */
-	@Column(name = "IS_VERIFICATIONED", nullable = false)
-	public String isVerificationed;
-
-	/** 郵便番号 */
-	@Column(name = "POST_CODE")
-	public String postCode;
-
-	/** 住所１ */
-	@Column(name = "ADDRESS1")
-	public String address1;
-
-	/** 住所２ */
-	@Column(name = "ADDRESS2")
-	public String address2;
+	/** ブログサブタイトル */
+	@Column(name = "BLOG_SUB_TITLE")
+	public String blogSubTitle;
 
 	/** プロファイル画像 */
 	@Column(name = "AVATAR_FILE_LOC")
 	public String avatarFileLoc;
+
+	/** 情報公開レベル */
+	@Column(name = "INFO_OPEN_LEVEL")
+	public String infoOpenLevel;
 
 	/** プロファイル文言 */
 	@Column(name = "SELF_INTRODUCE_TEXT")

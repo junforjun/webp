@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.webp.config.AuthenticationToken;
 import com.webp.model.Login;
+import com.webp.model.UserDetail;
 import com.webp.model.UserInfo;
 import com.webp.model.UserLogin;
 import com.webp.model.db.UserLogin_DB;
@@ -51,6 +52,7 @@ public class LoginController {
 	public String auth(Model model, Login login, HttpSession session) {
 
 		UserInfo user = null;
+		UserDetail userDetail = null;
 		try {
 			UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword());
 
@@ -60,7 +62,7 @@ public class LoginController {
 			          SecurityContextHolder.getContext());
 
 			user = userService.readUser(login.getUsername());
-
+			userDetail = userService.readUserFromId(login.getUsername());
 			session.setAttribute(user.userId, user);
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
@@ -68,23 +70,22 @@ public class LoginController {
 		}
 
 		UserLogin userLogin = new UserLogin();
-
 		userLogin.userId = user.userId;
 		userLogin.loginTime = DateUtil.getCurrentTimeStamp();
-
 		userLoginDB.save(userLogin);
 
 
 		model.addAttribute("AuthenticationToken", new Gson().toJson(
 				new AuthenticationToken(user.userId, userService.getAuthorities(user.userId), session.getId())));
-		session.setAttribute("url", user.urlId);
+
+		session.setAttribute("url", userDetail.urlId);
 
 		String referrer = (String)session.getAttribute("prevPage");
 
 
 		System.out.println("★★★★★★★" + referrer);
 
-        return StrUtil.isEmpty(referrer) ? user.urlId : referrer;
+        return StrUtil.isEmpty(referrer) ? userDetail.urlId : referrer;
 	}
 
 }
