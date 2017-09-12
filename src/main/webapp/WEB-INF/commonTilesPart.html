@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:fragment="includeCommon">
+	<script type="text/javascript" src="/resources/public/front/js/membersMenu.js"></script>
 </head>
 
 <body>
@@ -14,7 +15,10 @@
 				<a href="#"><span class="network-name">MYブログへ</span></a>
 			</li>
 			<li>
-				<a href="#"><span class="network-name">会員メニュー</span></a>
+				<a href="#"><span class="network-name" id="menu">会員メニュー</span></a>
+				<ul>
+					<li><a href="#">My Calendar</a></li>
+				</ul>
 			</li>
 		</ul>
 		<!-- ★検索テキストボックスと検索ボタン★ -->
