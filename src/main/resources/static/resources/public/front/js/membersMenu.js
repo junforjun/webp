@@ -12,8 +12,3 @@ $(function(){
 		  }
   );
 });
-//	$('.pass').focus(function(){
-//		$('.pw-help').slideDown(500);
-//	}).blur(function(){
-//		$('.pw-help').slideUp(500);
-//	});
