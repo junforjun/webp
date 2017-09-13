@@ -1,35 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="commonTilesPart::includeCommon"></head>
 
-  <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	<meta name="description" content="">
-	<meta name="author" content="">
+<script type="text/javascript" src="/resources/public/front/js/user_post.js"></script>
+<script type="text/javascript" src="/resources/public/front/js/prism.js"></script>
 
-	<title>My-B</title>
-<!-- bootstrap -->
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-<!-- Js -->
-	<script type="text/javascript" src="/resources/public/front/js/common.js"></script>
-	<script type="text/javascript" src="/resources/public/front/js/user_post.js"></script>
-	<script type="text/javascript" src="/resources/public/front/js/prism.js"></script>
-
-
-<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/resources/public/front/css/common.css">
-	<link href="/resources/public/front/css/user_post.css" rel="stylesheet">
-	<link href="/resources/public/front/css/prism.css" rel="stylesheet" />
-
-
-</head>
+<link href="/resources/public/front/css/user_post.css" rel="stylesheet">
+<link href="/resources/public/front/css/prism.css" rel="stylesheet" />
 
 <body>
+	<div th:replace="commonTilesPart::upperHeader"></div>
+
 
 	<!-- NAVBAR ================================================== -->
 	<div class="jumbotron jumbotron-fluid" style="margin-bottom:0px;background-image: url('/resources/public/front/img/main.jpg')">
@@ -46,13 +27,6 @@
 			</p>
 		</div>
 	</div>
-
-	<nav class="navbar navbar-inverse navbar-static-top">
-			<div class="container">
-				<div th:include="commonTilesPart::header"></div>
-			</div>
-	</nav>
-
 
 	<!-- Marketing messaging and featurettes
 	================================================== -->

@@ -1,31 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:include="commonTilesPart::includeCommon"></head>
 
-<meta charset="UTF-8">
-<title>Webp</title>
 
-	<!-- bootstrap -->
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-	<!-- Js -->
-	<script type="text/javascript" src="/resources/public/front/js/common.js"></script>
-	<script type="text/javascript" src="/resources/public/front/js/createRegUser.js"></script>
-
-	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/resources/public/front/css/common.css">
-	<link rel="stylesheet" href="/resources/public/front/css/login.css">
-
-</head>
-
+<script type="text/javascript" src="/resources/public/front/js/createRegUser.js"></script>
+<link rel="stylesheet" href="/resources/public/front/css/createRegUser.css">
 
 <body>
+	<div th:replace="commonTilesPart::upperHeader"></div>
 
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div th:include="commonTilesPart::header"></div>
-	</nav>
 	<!-- 회원가입  -->
 	<div class="container">
 		<div class="modal-dialog">

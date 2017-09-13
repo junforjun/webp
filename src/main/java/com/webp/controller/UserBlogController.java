@@ -35,7 +35,7 @@ public class UserBlogController {
 			return "pageNotFound";
 		}
 
-		model.addAttribute("common", commonResponse);
+		model.addAttribute("header", commonResponse);
 
 		return "user_main";
 	}
@@ -50,7 +50,8 @@ public class UserBlogController {
 		if ("1".equals(commonResponse.noUser)) {
 			return "pageNotFound";
 		}
-		model.addAttribute("common", commonResponse);
+
+		model.addAttribute("header", commonResponse);
 
 		List<PostDetail> postResponse = blogPostService.getPost(categoryCode, null);
 

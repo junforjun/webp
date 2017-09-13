@@ -33,7 +33,7 @@ public class WriteConmtroller {
 			return "pageNotFound";
 		}
 
-		model.addAttribute("common", response);
+		model.addAttribute("header", response);
 
 		return "write";
 	}

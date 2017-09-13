@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.webp.service.GetCommonInfoService;
-import com.webp.service.model.service.common.ApiResponse;
 
 @Controller
 public class IndexController {
@@ -19,12 +18,7 @@ public class IndexController {
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String login(Model model, HttpSession session) {
-
-		ApiResponse commonResponse = blogService.getCommonMenu("/", session);
-		session.setAttribute("common", commonResponse);
-
+		model.addAttribute("header", blogService.getCommonMenu("/", session));
         return "index";
 	}
-
-
 }

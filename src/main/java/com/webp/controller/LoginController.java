@@ -23,6 +23,7 @@ import com.webp.model.UserDetail;
 import com.webp.model.UserInfo;
 import com.webp.model.UserLogin;
 import com.webp.model.db.UserLogin_DB;
+import com.webp.service.GetCommonInfoService;
 import com.webp.service.UserService;
 import com.webp.util.DateUtil;
 import com.webp.util.StrUtil;
@@ -31,19 +32,24 @@ import com.webp.util.StrUtil;
 public class LoginController {
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@Autowired
-	AuthenticationManager authenticationManager;
+	private GetCommonInfoService blogService;
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
 	@Autowired
 	private UserLogin_DB userLoginDB;
 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login(HttpSession session, HttpServletRequest request) {
+	public String login(Model model, HttpSession session, HttpServletRequest request) {
 
 		String referrer = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", referrer);
+		model.addAttribute("header", blogService.getCommonMenu(session));
+
 		return "login";
 	}
 

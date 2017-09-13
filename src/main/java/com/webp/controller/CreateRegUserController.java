@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.webp.service.GetCommonInfoService;
 import com.webp.service.UserService;
 import com.webp.service.model.userCreate.UserCreateRequest;
 import com.webp.util.Log;
@@ -18,13 +19,18 @@ import com.webp.util.Log;
 public class CreateRegUserController {
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@Autowired
-	AuthenticationManager authenticationManager;
+	private GetCommonInfoService blogService;
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
 	@RequestMapping(value = "/user/registration", method = RequestMethod.GET)
 	public String login(Model model, HttpSession session) {
+		model.addAttribute("header", blogService.getCommonMenu(session));
+
 		return "createRegUser";
 	}
 

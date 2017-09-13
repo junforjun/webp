@@ -40,7 +40,6 @@ public class GetCommonInfoService {
 		ApiResponse response = new ApiResponse();
 		UserDetail user = new UserDetail();
 
-
 		SecurityContext con = (SecurityContext)session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
 
 		if(con != null) {

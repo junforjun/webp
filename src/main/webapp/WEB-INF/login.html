@@ -1,61 +1,48 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="commonTilesPart::includeCommon"></head>
 
-<head>
-
-<meta charset="UTF-8">
-<title>Webp</title>
-
-<!-- bootstrap -->
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-<!-- Js -->
-<script type="text/javascript" src="/resources/public/front/js/common.js"></script>
 <script type="text/javascript" src="/resources/public/front/js/login.js"></script>
-
-
-<!-- CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="/resources/public/front/css/common.css">
-<link rel="stylesheet" href="/resources/public/front/css/login.css" >
-
-</head>
-
+<link rel="stylesheet" href="/resources/public/front/css/login.css">
 
 <body>
+	<div th:replace="commonTilesPart::upperHeader"></div>
+
+
 	<div class="container">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div th:include="commonTilesPart::header"></div>
-		</nav>
-		<!-- main st -->
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<h2 class="form-signin-heading IndieFlower ">Log in</h2>
+				<div class="rel right"></div>
 
-		<h2 class="form-signin-heading siteTitle">My-B.ME</h2>
-		<div class="rel right">
+				<div class="rel">
+					<label for="inputEmail" class="sr-only">ID</label> <input type="text" id="username" class="form-control" placeholder="ID" required autofocus value="kyuno1984@gmail.com"> <label
+						for="inputPassword" class="sr-only"
+					>Password</label> <input type="password" id="password" class="form-control" placeholder="Password" required value="1111">
 
+					<div class="checkbox">
+						<label class="checkbox"> <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> 自動ログイン
+						</label>
+					</div>
+				</div>
+				<button class="btn btn-md btn-primary btn-block" onclick="loginChk()">
+					<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Sign in
+				</button>
+				<br>
+				<button class="btn btn-md btn-info btn-block" onclick="redirect('/user/registration')">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>新規加入
+				</button>
+			</div>
+			<div class="col-sm-2"></div>
 		</div>
 
-		<div class="rel">
-			<label for="inputEmail" class="sr-only" >ID</label>
-			<input type="text" id="username" class="form-control" placeholder="ID" required autofocus value="kyuno1984@gmail.com">
 
-			<label for="inputPassword" class="sr-only">Password</label>
-			<input type="password" id="password" class="form-control" placeholder="Password" required value="1111">
-
-		<div class="checkbox">
-			<label class="checkbox"> <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> 自動ログイン
-			</label>
-		</div>
-		</div>
-		<button class="btn btn-md btn-primary btn-block" onclick="loginChk()">Sign in</button>
-		<br>
-		<button class="btn btn-md btn-info btn-block" onclick="redirect('/user/registration')">新規加入</button>
 	</div>
 	<!-- /container -->
 
 
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<!--  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-</body>
 </body>
 </html>

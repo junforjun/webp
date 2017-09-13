@@ -1,36 +1,132 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="en">
+
 <head th:fragment="includeCommon">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+    <title>My-B.ME</title>
+
+    <!-- Js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="/resources/public/front/js/common.js"></script>
+	<th:block layout:fragment="script"></th:block>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/public/front/css/common.css">
+	<link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
+	<th:block layout:fragment="css"></th:block>
+
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+	</style>
 </head>
 
 <body>
-<nav th:fragment="upperHeader">
-	<div class="container-fluid">
+<nav th:attr="class='navbar navbar-default'" th:fragment="upperHeader">
+	<div class="container">
 		<div class="navbar-header">
-			<!-- ★Title★ -->
-			<a class="navbar-brand siteTitle" href="/">My-B.ME</a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand IndieFlower" href="/">[my-b.me]</a>
 		</div>
-		<ul class="nav navbar-nav" th:if="${common != null  and common.isLogin == '1'}">
-			<li>
-				<a href="#"><span class="network-name">MYブログへ</span></a>
-			</li>
-			<li>
-				<a href="#"><span class="network-name">会員メニュー</span></a>
-			</li>
-		</ul>
-		<!-- ★検索テキストボックスと検索ボタン★ -->
-		<form class="navbar-form navbar-right">
-			<!-- 検索 -->
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search"></input>
-			</div>
-			<button type="submit" class="btn btn-default">検索</button>
-		</form>
-		<form class="navbar-form navbar-right">
-			<a href="/user/registration" class="btn btn-default btn-sm" >新規加入</a>
-		</form>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
 
+				<!-- ■■■■■■■■■■ブログ管理■■■■■■■■■■ -->
+				<li class="dropdown" th:if="${header != null and header.isLogin == '1'}">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						ブログ管理 <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#">ブログ設定</a></li>
+						<li><a href="#">ブログ輸入経路</a></li>
+
+						<!-- ★★★★★★★지운상 여기다 만들도록!!★★★★★★ -->
+						<li><a href="#">書き込み頻度</a></li>
+					</ul>
+				</li>
+				<!-- ■■■■■■■■■■My-Blog■■■■■■■■■■ -->
+				<li th:if="${header != null and header.isLogin == '1'}">
+					<div>
+					<button type="button" class="btn btn-info btn-sm navbar-btn btn-block " onclick="redirect('/kyuno1984')">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						My-Blog
+					</button>
+					</div>
+				</li>
+				<!-- ■■■■■■■■■■Search bar■■■■■■■■■■ -->
+				<li id="searchBox">
+					<form class="navbar-form navbar-left" role="search">
+					  <div class="input-group navbar-searchbox">
+					    <input type="text" class="form-control"></input>
+					    <div class="input-group-btn">
+					      <button type="submit" class="btn btn-default">Search</button>
+					    </div>
+					  </div>
+					</form>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right" th:if="${header == null or header.isLogin == '0'}">
+				<!-- ■■■■■■■■■■Log In■■■■■■■■■■ -->
+				<li>
+					<div style="margin-right: 5px;margin-left: 5px">
+						<button type="button" class="btn btn-info btn-sm navbar-btn btn-block" onclick="redirect('/login')">
+							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+							Log In
+						</button>
+					</div>
+				</li>
+				<!-- ■■■■■■■■■■Sign up■■■■■■■■■■ -->
+				<li>
+					<div style="margin-right: 5px;margin-left: 5px">
+						<button type="button" class="btn btn-danger btn-sm navbar-btn btn-block" onclick="redirect('/user/registration')">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							Sign up
+						</button>
+					</div>
+				</li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right" th:if="${header != null and header.isLogin == '1'}">
+				<!-- ■■■■■■■■■■config■■■■■■■■■■ -->
+				<li>
+					<div style="margin-right: 5px;margin-left: 5px">
+						<button type="button" class="btn btn-nomal btn-sm navbar-btn btn-block" onclick="redirect('/conf')">
+							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+						</button>
+					</div>
+				</li>
+				<!-- ■■■■■■■■■■log out■■■■■■■■■■ -->
+				<li>
+					<div style="margin-right: 5px;margin-left: 5px">
+						<button type="button" class="btn btn-danger btn-sm navbar-btn btn-block" onclick="redirect('/logout')">
+							<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+						</button>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
 </nav>
+
+
+
+
+
+
+
+
+
 
 <div class="container" th:fragment="header">
 	<div class="container-fluid">
