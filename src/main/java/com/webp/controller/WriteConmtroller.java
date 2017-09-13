@@ -27,7 +27,7 @@ public class WriteConmtroller {
 	public String writePostPage(Model model, HttpSession session) {
 
 
-		ApiResponse response = blogService.getCommonMenu(session);
+		ApiResponse response = blogService.getCommonMenu("write", session);
 
 		if ("1".equals(response.noUser)) {
 			return "pageNotFound";

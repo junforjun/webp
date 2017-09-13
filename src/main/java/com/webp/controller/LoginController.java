@@ -48,7 +48,7 @@ public class LoginController {
 
 		String referrer = request.getHeader("Referer");
 		request.getSession().setAttribute("prevPage", referrer);
-		model.addAttribute("header", blogService.getCommonMenu(session));
+		model.addAttribute("header", blogService.getCommonMenu("/login", session));
 
 		return "login";
 	}

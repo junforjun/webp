@@ -29,7 +29,7 @@ public class CreateRegUserController {
 
 	@RequestMapping(value = "/user/registration", method = RequestMethod.GET)
 	public String login(Model model, HttpSession session) {
-		model.addAttribute("header", blogService.getCommonMenu(session));
+		model.addAttribute("header", blogService.getCommonMenu("/user/registration", session));
 
 		return "createRegUser";
 	}
