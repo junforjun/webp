@@ -15,12 +15,12 @@
 
 			<!-- ■■■■ブログタイトル ■■■■-->
 			<h1 style="color:white;'">
-				<span th:text="${common.title}">title</span>
+				<span th:text="${header.title}">title</span>
 			</h1>
 
 			<!-- ■■■■ブログサブタイトル ■■■■-->
 			<p style="color:white;">
-				<span th:text="${common.subTitle}">subtitle</span>
+				<span th:text="${header.subTitle}">subtitle</span>
 			</p>
 		</div>
 	</div>
@@ -39,7 +39,7 @@
 		<div class="col col-sm-1" >Category：</div>
 		<div class="col col-sm-11">
 
-				<select id="category" name="cars" th:each="category:${common.categoryList}">
+				<select id="category" name="cars" th:each="category:${header.categoryList}">
 					<option th:attr="value=${category.categoryCode}">
 						<span th:text="${category.catecoryName}">
 							categoryList.Name
