@@ -1,0 +1,15 @@
+@charset "UTF-8";
+@keyframes spin {
+	100%{
+		transform:rotate(360deg);
+	}
+}
+.spinner{
+	display:inline-block;
+	width:50px;
+	height: 50px;
+	border: 5px solid yellow;
+	border-radius: 50%;
+	border-color: yellow transparent transparent;
+	animation: spin 1s linear infinite;
+}
