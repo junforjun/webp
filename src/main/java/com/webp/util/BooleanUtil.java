@@ -6,6 +6,6 @@ public class BooleanUtil {
 	}
 
 	public static String toFlag(boolean bool) {
-		return bool ? "1" : "0";
+		return bool ? "1" :  "0";
 	}
 }
