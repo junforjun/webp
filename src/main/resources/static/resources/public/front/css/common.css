@@ -1,8 +1,6 @@
 body {
 	font-family: "Rounded Mplus 1c";
 }
-
-
 .rel {
 	position: relative;
 }
@@ -44,7 +42,5 @@ body {
 @media ( min-width : @screen-sm-min) {
 	.navbar-searchbox {
 		max-width: 250px;
-
 	}
-
 }
