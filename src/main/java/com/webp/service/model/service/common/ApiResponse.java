@@ -19,6 +19,8 @@ public class ApiResponse {
 	public String title;
 	public String subTitle;
 	public String noUser = "0";
+	public String message;
+	public String rtnStatus;
 
 	public List<MenuMaster> menuList = new ArrayList<>();
 	public List<CategoryDetail> categoryList  = new ArrayList<>();

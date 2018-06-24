@@ -18,6 +18,12 @@
 .navbar-fixed-top {
 	border: 0;
 }
+.tooltip-inner {
+	    max-width: none;
+    white-space: nowrap;
+
+	}
+
 
 /*
  * Sidebar

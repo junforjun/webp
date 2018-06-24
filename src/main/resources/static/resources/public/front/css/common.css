@@ -1,6 +1,9 @@
 body {
 	font-family: "Rounded Mplus 1c";
 }
+
+label{display: block;}
+
 .rel {
 	position: relative;
 }

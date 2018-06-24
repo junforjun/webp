@@ -19,6 +19,9 @@ mail:
     starttls:
       enable: true
 
+createuser:
+  min_length: 4
+
 debug: false
 banner:
   location:banner.txt

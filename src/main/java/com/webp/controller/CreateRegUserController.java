@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.webp.service.GetCommonInfoService;
+import com.webp.service.UserCheckService;
 import com.webp.service.UserService;
 import com.webp.service.model.userCreate.UserCreateRequest;
+import com.webp.service.model.userCreate.UserCreateResponse;
 import com.webp.util.Log;
 
 @Controller
@@ -25,6 +28,9 @@ public class CreateRegUserController {
 	private GetCommonInfoService blogService;
 
 	@Autowired
+	private UserCheckService userCheckService;
+
+	@Autowired
 	private AuthenticationManager authenticationManager;
 
 	@RequestMapping(value = "/user/registration", method = RequestMethod.GET)
@@ -34,13 +40,13 @@ public class CreateRegUserController {
 		return "createRegUser";
 	}
 
-	@RequestMapping(value = "/user/regUser", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "/user/step1", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String createUser(UserCreateRequest request, HttpSession session) {
+	public String createUser(Model model, UserCreateRequest request, HttpSession session) {
 		Log.vipLog(request.toString());
-		// 重複検査を行うこと。TODO
-		userService.createUser(request);
 
-		return "1";
+		UserCreateResponse res = userCheckService.checkStep1(request);
+
+		return new Gson().toJson(res);
 	}
 }

@@ -1,35 +1,27 @@
-function regUser() {
-
-	if ($('#userPassword').val() != $('#userPassword2').val()) {
-		alert("패스워드가 다름");
-		return;
-	}
-/*	if ($('#agree').val() == "") {
-		alert("동의해");
-		return;
-	}
-	alert("Male" + $("agree").val());*/
-
+function step1() {
 
 	jQuery.ajax({
 		type : "POST",
-		url : "/user/regUser/",
+		url : "/user/step1/",
+		dataType:"json",
 		data : {
-			"userId" : $("#userEmail").val(),
-			"firstName" : $("#userfirstname").val(),
-			"lastName" : $("#userlastname").val(),
-			"userPass" : $("#userPassword").val(),
-			"userNick" : $("#userNick").val(),
-			"urlId" : $("#urlId").val(),
-			"sex" : $("input[type=radio][id=userSex]:checked").val()
+			"id" : $("#id").val(),
+			"pass" : $("#pass").val(),
 		},
 
 		success : function(data) {
-			alert(data);
-			if (data == "1") {
-				redirect("/" + $("#urlId").val());
+			if($("#id").val() == "") {
+				$('#id').tooltip('destroy');
+				$("#idbox").attr("class", "input-group");
+			} else if (data.message != null) {
+				$("#id").attr("title", data.message);
+				$("#idbox").attr("class", "input-group has-error");
+				$('#id').tooltip({placement: 'right',trigger: 'manual'}).tooltip('show');
+
+
 			} else {
-				alert(data);
+				$('#id').tooltip('destroy');
+				$("#idbox").attr("class", "input-group has-success");
 			}
 		},
 		complete : function(data) {

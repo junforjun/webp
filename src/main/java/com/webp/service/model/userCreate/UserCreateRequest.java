@@ -4,10 +4,10 @@ import com.webp.service.model.service.common.ApiRequest;
 
 public class UserCreateRequest extends ApiRequest {
 	/** ユーザID */
-	public String userId;
+	public String id;
 
 	/** ユーザパスワード */
-	public String userPass;
+	public String pass;
 
 	/** ユーザブログURL */
 	public String urlId;
@@ -41,22 +41,6 @@ public class UserCreateRequest extends ApiRequest {
 
 	/** プロファイル文言 */
 	public String selfIntroduceText;
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getUserPass() {
-		return userPass;
-	}
-
-	public void setUserPass(String userPass) {
-		this.userPass = userPass;
-	}
 
 	public String getUrlId() {
 		return urlId;
@@ -144,6 +128,22 @@ public class UserCreateRequest extends ApiRequest {
 
 	public void setSelfIntroduceText(String selfIntroduceText) {
 		this.selfIntroduceText = selfIntroduceText;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 }

@@ -3,6 +3,7 @@ package com.webp.util;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.security.MessageDigest;
+import java.util.regex.Pattern;
 
 import javax.mail.internet.MimeUtility;
 
@@ -58,4 +59,12 @@ public class StrUtil {
 
 		return null;
 	}
+
+	public static boolean isEmail(String email) {
+        if (email==null) return false;
+        boolean b = Pattern.matches(
+            "[\\w\\~\\-\\.]+@[\\w\\~\\-]+(\\.[\\w\\~\\-]+)+",
+            email.trim());
+        return b;
+    }
 }
