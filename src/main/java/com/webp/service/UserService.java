@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.webp.model.UserDetail;
 import com.webp.model.UserInfo;
-import com.webp.service.model.userCreate.UserCreateRequest;
+import com.webp.service.model.userCreate.RegUserRequest;
 
 @Service
 public interface UserService extends UserDetailsService {
@@ -18,7 +18,7 @@ public interface UserService extends UserDetailsService {
 
 	public UserInfo readUser(String username);
 
-	public void createUser(UserCreateRequest user);
+	public void createUser(RegUserRequest user);
 
 	public int validateUser(UserInfo user);
 

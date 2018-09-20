@@ -2,36 +2,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:include="commonTilesPart::includeCommon"></head>
 
-
 <script type="text/javascript" src="/resources/public/front/js/createRegUser.js"></script>
 <link rel="stylesheet" href="/resources/public/front/css/createRegUser.css">
-
-
 
 <body>
 	<div th:replace="commonTilesPart::upperHeader"></div>
 
-	<!-- 회원가입  -->
 	<div class="container">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
 			<form class="rel" action="/user/registration2" method="post">
-				<label class= "list-group-item active" style="width:100%" >Create a New Account <br> <h3>STEP 1/2 Input your E-mail and PASSWORD</h3></label>
+				<label class= "list-group-item active" style="width:100%" >Create a New Account <br> <h3>Input your E-mail and PASSWORD</h3></label>
 				<div id="idbox" class="input-group">
 					<input id="id" type="text" class="form-control" name="email" placeholder="Email" autofocus rel="txtTooltip" title="" data-toggle="tooltip" data-placement="right" oninput ="step1_id()">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 				</div>
 				<div id="passbox" class="input-group">
-					<input id="pass" type="password" class="form-control" name="password" placeholder="Password" autofocus rel="txtTooltip" title="" data-toggle="tooltip" data-placement="right" oninput ="step1_pass()">
+					<input id="pass" type="password" class="form-control" name="pass" placeholder="Password" autofocus rel="txtTooltip" title="" data-toggle="tooltip" data-placement="right" oninput ="step1_pass()">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 				</div>
 				<hr>
 				<div class="rel right">
-						<input type="submit"   disabled="disabled" id ="nextBtn" class="btn btn-md btn-success"  value="NEXT ->">
+						<input type="submit"  id ="nextBtn" class="btn btn-md btn-success"  value="NEXT ->">
 				</div>
 			</form>
 			<div class="rel">
-
 				</div>
 			</div>
 		<div class="col-md-3"></div>

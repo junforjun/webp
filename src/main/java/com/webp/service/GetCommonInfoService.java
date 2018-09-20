@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.webp.model.UserDetail;
 import com.webp.service.model.service.common.ApiResponse;
+import com.webp.util.Log;
 
 @Service
 public class GetCommonInfoService {
@@ -35,10 +36,10 @@ public class GetCommonInfoService {
 	}
 
 	public ApiResponse getCommonMenu(String url, HttpSession session) {
-		System.out.println("Requested Page : " + url);
-
 		ApiResponse response = new ApiResponse();
 		UserDetail user = new UserDetail();
+
+		Log.debug("Requested Page : " + url);
 
 		SecurityContext con = (SecurityContext)session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
 

@@ -7,7 +7,7 @@ function step1_id() {
 		url : "/user/step1/id",
 		dataType:"json",
 		data : {
-			"id" : $("#id").val(),
+			"email" : $("#id").val(),
 		},
 		success : function(data) {
 			if($("#id").val() == "") {

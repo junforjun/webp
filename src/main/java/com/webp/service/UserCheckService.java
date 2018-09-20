@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mysema.query.jpa.impl.JPAQuery;
-import com.webp.service.model.userCreate.UserCreateRequest;
-import com.webp.service.model.userCreate.UserCreateResponse;
+import com.webp.service.model.userCreate.RegUserRequest;
+import com.webp.service.model.userCreate.RegUserResponse;
 import com.webp.util.Log;
 import com.webp.util.StrUtil;
 
@@ -22,11 +22,11 @@ public class UserCheckService {
 	@Autowired
 	private EntityManager em;
 
-	public UserCreateResponse checkId(UserCreateRequest request) {
+	public RegUserResponse checkId(RegUserRequest request) {
 
-		UserCreateResponse res = new UserCreateResponse();
+		RegUserResponse res = new RegUserResponse();
 
-		String id = request.getId();
+		String id = request.getEmail();
 
 		if(id.isEmpty()) {
 			res.message = "Please input your E-MAIL";
@@ -45,9 +45,9 @@ public class UserCheckService {
 		return res;
 	}
 
-	public UserCreateResponse checkPass(UserCreateRequest request) {
+	public RegUserResponse checkPass(RegUserRequest request) {
 
-		UserCreateResponse res = new UserCreateResponse();
+		RegUserResponse res = new RegUserResponse();
 
 		String pass = request.getPass();
 

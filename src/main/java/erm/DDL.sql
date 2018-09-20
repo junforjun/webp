@@ -1,55 +1,17 @@
-DROP TABLE IF EXISTS ele_usage;
+DROP TABLE IF EXISTS verification_email;
 
-CREATE TABLE ele_usage (
-	USER_ID VARCHAR(8), 
-	ELE_DATE DATE, 
-	USAGE INTEGER
+CREATE TABLE verification_email (
+	verfi_str VARCHAR(255), 
+	verfi_time TIMESTAMP, 
+	email VARCHAR
 );
 
 
 
-COMMENT ON TABLE ele_usage IS  '電力量使用テーブル';
-COMMENT ON COLUMN ele_usage.USER_ID IS '고객ID';
-COMMENT ON COLUMN ele_usage.ELE_DATE IS '사용일';
-COMMENT ON COLUMN ele_usage.USAGE IS '사용량';
-
-
-
-DROP TABLE IF EXISTS ele_fee;
-
-CREATE TABLE ele_fee (
-	USER_ID VARCHAR(8), 
-	ELE_MONTH DATE, 
-	USAGE_MONTH INTEGER, 
-	FEE INTEGER, 
-	ADDRESS VARCHAR(200)
-);
-
-
-
-COMMENT ON TABLE ele_fee IS  '電気料金（月）';
-COMMENT ON COLUMN ele_fee.USER_ID IS '고객ID';
-COMMENT ON COLUMN ele_fee.ELE_MONTH IS '월';
-COMMENT ON COLUMN ele_fee.USAGE_MONTH IS '사용량';
-COMMENT ON COLUMN ele_fee.FEE IS '전기요금';
-COMMENT ON COLUMN ele_fee.ADDRESS IS '주소';
-
-
-
-DROP TABLE IF EXISTS kaiin_master;
-
-CREATE TABLE kaiin_master (
-	USER_ID VARCHAR(8), 
-	ELE_MONTH VARCHAR(200), 
-	USAGE_MONTH VARCHAR(1)
-);
-
-
-
-COMMENT ON TABLE kaiin_master IS  '顧客マスター';
-COMMENT ON COLUMN kaiin_master.USER_ID IS '고객ID';
-COMMENT ON COLUMN kaiin_master.ELE_MONTH IS '주소';
-COMMENT ON COLUMN kaiin_master.USAGE_MONTH IS 'DELETE_FLAG';
+COMMENT ON TABLE verification_email IS  'ユーザ認証';
+COMMENT ON COLUMN verification_email.verfi_str IS '認証文字列';
+COMMENT ON COLUMN verification_email.verfi_time IS '認証時間';
+COMMENT ON COLUMN verification_email.email IS 'E-Mail';
 
 
 

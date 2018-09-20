@@ -2,9 +2,9 @@ package com.webp.service.model.userCreate;
 
 import com.webp.service.model.service.common.ApiRequest;
 
-public class UserCreateRequest extends ApiRequest {
+public class RegUserRequest extends ApiRequest {
 	/** ユーザID */
-	public String id;
+	public String email;
 
 	/** ユーザパスワード */
 	public String pass;
@@ -130,20 +130,20 @@ public class UserCreateRequest extends ApiRequest {
 		this.selfIntroduceText = selfIntroduceText;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public String getPass() {
 		return pass;
 	}
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

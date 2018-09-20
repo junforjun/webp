@@ -28,7 +28,7 @@ import com.webp.model.db.UserAuthentication_DB;
 import com.webp.model.db.UserDetail_DB;
 import com.webp.model.db.UserInfo_DB;
 import com.webp.service.UserService;
-import com.webp.service.model.userCreate.UserCreateRequest;
+import com.webp.service.model.userCreate.RegUserRequest;
 import com.webp.util.StrUtil;
 
 @Service
@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void createUser(UserCreateRequest request) {
+	public void createUser(RegUserRequest request) {
 
 	}
 

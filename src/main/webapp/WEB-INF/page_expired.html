@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="commonTilesPart::includeCommon"></head>
+
+<body>
+	<div th:replace="commonTilesPart::upperHeader"></div>
+
+	<!-- Marketing messaging and featurettes
+	================================================== -->
+	<!-- Wrap the rest of the page in another container to center all the content. -->
+
+	<div class="container marketing">
+
+		<!-- START THE FEATURETTES -->
+
+		<div class="jumbotron">
+			<h1 class="display-3">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Expired request
+			</h1>
+			<p class="lead">
+				<span class="text-muted">すでに満了したページです。</span>
+			</p>
+			<p>
+				<a class="btn btn-lg btn-success" href="/" role="button">Back to Main</a>
+			</p>
+		</div>
+
+
+		<!-- /END THE FEATURETTES -->
+
+
+
+	</div>
+	<!-- /.container -->
+
+
+	<footer th:include="commonTilesPart::footer"></footer>
+
+</body>
+</html>

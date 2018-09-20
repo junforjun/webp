@@ -6,63 +6,24 @@
 <script type="text/javascript" src="/resources/public/front/js/createRegUser.js"></script>
 <link rel="stylesheet" href="/resources/public/front/css/createRegUser.css">
 
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-
 <body>
 	<div th:replace="commonTilesPart::upperHeader"></div>
 
-	<!-- 회원가입  -->
 	<div class="container">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-			<div class="rel">
-				<label class= "list-group-item active" style="width:100%" >Create a New Account <br> <h3>STEP 2/2 Input your personal informatioin(Optional)</h3></label>
-				<div id="idbox" class="input-group">
-					<input id="name" type="text" class="form-control" name="email" placeholder="Email" autofocus rel="txtTooltip" title="" data-toggle="tooltip" data-placement="right" oninput ="step1_id()">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-				</div>
-				<div id="passbox" class="input-group">
-					<input id="pass" type="password" class="form-control" name="password" placeholder="Password" autofocus rel="txtTooltip" title="" data-toggle="tooltip" data-placement="right" oninput ="step1_pass()">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				</div>
-
+			<form class="rel" action="/user/registration2" method="post">
+				<label class= "list-group-item active" style="width:100%" ><h3><i class="glyphicon glyphicon-envelope"></i>メールを送信しました。 </h3><p> </label>
+				<label class= "list-group-item active" style="width:100%" >メールのリンクをクリックして認証を行ってください。</label>
+				<hr>
 				<div class="rel right">
-						<button class="btn btn-md btn-success btn-block" onclick="step1()">NEXT 2/3→</button>
+						<input type="submit"   disabled="disabled" id ="nextBtn" class="btn btn-md btn-success"  value="NEXT ->">
 				</div>
-
-			</div>
-			<hr>
-
-			<div class="rel">
-
-					<label>You can choice other way to Sign-in</label>
-
-					<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-					    <script>
-					      function onSignIn(googleUser) {
-					        // Useful data for your client-side scripts:
-					        var profile = googleUser.getBasicProfile();
-					        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-					        console.log('Full Name: ' + profile.getName());
-					        console.log('Given Name: ' + profile.getGivenName());
-					        console.log('Family Name: ' + profile.getFamilyName());
-					        console.log("Image URL: " + profile.getImageUrl());
-					        console.log("Email: " + profile.getEmail());
-					        // The ID token you need to pass to your backend:
-					        var id_token = googleUser.getAuthResponse().id_token;
-					        console.log("ID Token: " + id_token);
-					      };
-					    </script>
-				</div>
-			</div>
-		<div class="col-md-3"></div>
-
-
+			<div class="rel"></div>
+			</form>
+			<div class="rel"></div>
 		</div>
-	<br>
-
-
+	<div class="col-md-3"></div>
+</div>
 </body>
 </html>
