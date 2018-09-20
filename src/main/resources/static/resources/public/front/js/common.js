@@ -110,4 +110,15 @@ function redirect(url) {
 	}
 }
 
+function page_move(s_page,s_name,s_value){
+    var f=document.paging; //폼 name
+    f.page.value = s_page; //POST방식으로 넘기고 싶은 값
+    f.src_name.value = s_name; //POST방식으로 넘기고 싶은 값
+    f.src_value.value = s_value;//POST방식으로 넘기고 싶은 값
+    f.action="XXXXXXX.php";//이동할 페이지
+    f.method="post";//POST방식
+    f.submit();
+}
+
+
 

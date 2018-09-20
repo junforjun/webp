@@ -16,7 +16,6 @@ import com.webp.service.UserCheckService;
 import com.webp.service.UserService;
 import com.webp.service.model.userCreate.UserCreateRequest;
 import com.webp.service.model.userCreate.UserCreateResponse;
-import com.webp.util.Log;
 
 @Controller
 public class CreateRegUserController {
@@ -34,19 +33,30 @@ public class CreateRegUserController {
 	private AuthenticationManager authenticationManager;
 
 	@RequestMapping(value = "/user/registration", method = RequestMethod.GET)
-	public String login(Model model, HttpSession session) {
+	public String createRegUser(Model model, HttpSession session) {
 		model.addAttribute("header", blogService.getCommonMenu("/user/registration", session));
 
 		return "createRegUser";
 	}
 
-	@RequestMapping(value = "/user/step1", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "/user/step1/id", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String createUser(Model model, UserCreateRequest request, HttpSession session) {
-		Log.vipLog(request.toString());
-
-		UserCreateResponse res = userCheckService.checkStep1(request);
-
+	public String checkId(Model model, UserCreateRequest request, HttpSession session) {
+		UserCreateResponse res = userCheckService.checkId(request);
 		return new Gson().toJson(res);
+	}
+
+	@RequestMapping(value = "/user/step1/pass", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String checkPass(Model model, UserCreateRequest request, HttpSession session) {
+		UserCreateResponse res = userCheckService.checkPass(request);
+		return new Gson().toJson(res);
+	}
+
+	@RequestMapping(value = "/user/registration2", method = RequestMethod.POST)
+	public String createRegUser2(Model model, HttpSession session) {
+		model.addAttribute("header", blogService.getCommonMenu("/user/registration", session));
+
+		return "createRegUser2";
 	}
 }

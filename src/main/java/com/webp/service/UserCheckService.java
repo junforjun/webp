@@ -22,7 +22,7 @@ public class UserCheckService {
 	@Autowired
 	private EntityManager em;
 
-	public UserCreateResponse checkStep1(UserCreateRequest request) {
+	public UserCreateResponse checkId(UserCreateRequest request) {
 
 		UserCreateResponse res = new UserCreateResponse();
 
@@ -38,6 +38,25 @@ public class UserCheckService {
 			if(isExistId > 0) {
 				res.message = "Already exist E-MAIL";
 			}
+		}
+
+		Log.debug(res.message);
+
+		return res;
+	}
+
+	public UserCreateResponse checkPass(UserCreateRequest request) {
+
+		UserCreateResponse res = new UserCreateResponse();
+
+		String pass = request.getPass();
+
+		if(pass.isEmpty()) {
+			res.message = "Please input Password";
+		} else if(pass.length() < 4) {
+			res.message = "Pease enter a password of at least 4 characters";
+		} else {
+			// 패스워드는 딱히.. 제한을 두고싶진 않음
 		}
 
 		Log.debug(res.message);
