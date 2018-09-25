@@ -75,6 +75,28 @@ function step1_pass() {
 	});
 }
 
+function step2_verify() {
+	alert("1");
+	jQuery.ajax({
+		type : "POST",
+		url : "/user/step2/verfy",
+		dataType:"json",
+		success : function(data) {
+			if (data.message == null) {
+				$("form:first").submit();
+			} else {
+				alert(data.message);
+			}
+		},
+		complete : function(data) {
+		},
+		error : function(xhr, status, error) {
+			alert("server error" + status);
+			alert(error);
+		}
+	});
+}
+
 function nextStep() {
 	step1_id();
 	step1_pass();

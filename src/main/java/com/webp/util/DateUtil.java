@@ -19,4 +19,13 @@ public class DateUtil {
 		return Timestamp.valueOf(LocalDateTime.now());
 	}
 
+	public static Timestamp addMin(Timestamp t, int m) {
+
+		LocalDateTime ldt = t.toLocalDateTime();
+		ldt.plusMinutes(m);
+
+		return Timestamp.valueOf(ldt);
+
+	}
+
 }
