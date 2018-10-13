@@ -102,7 +102,6 @@ public class CreateRegUserController {
 		if(request.email == null) {
 			return  "page_expired";
 		}
-
 		// メール認証用文字列をＤＢに登録する。
 		regUserService.regVerification(request);
 
@@ -117,17 +116,19 @@ public class CreateRegUserController {
 		return "createRegUser2";
 	}
 	@RequestMapping(value = "/user/registration3", method = RequestMethod.POST)
-	public String createRegUser3(Model model, RegUserRequest request, HttpSession session) {
+	public String createRegUser3(Model model, HttpSession session) {
 		model.addAttribute("header", blogService.getCommonMenu("/user/registration3", session));
 
-		VerificationEmail verification = regUserService.getVerfyInfoByEmail(request.email);
+		String email = (String) session.getAttribute("email");
+
+		VerificationEmail verification = regUserService.getVerfyInfoByEmail(email);
 		if(verification == null || verification.verfiyStr == null) {
 			return "page_expired";
 		} else {
-			regUserService.changeFlagForSuccess(verification, "1");
+			regUserService.changeFlag(verification, "1");
 			Log.debug(verification.email  + "認証完了");
 			// セッション管理（前、先遷移防止）
-			model.addAttribute("email", verification.email);
+			model.addAttribute("blog_name", verification.email.split("@")[0] );
 			return "createRegUser3";
 		}
 	}
@@ -145,7 +146,7 @@ public class CreateRegUserController {
 		if(verification == null || verification.verfiyStr == null) {
 			return "page_expired";
 		} else {
-			regUserService.changeFlagForSuccess(verification, "1");
+			regUserService.changeFlag(verification, "1");
 			Log.debug(verification.email  + "認証完了");
 			// セッション管理（前、先遷移防止）
 			model.addAttribute("email", verification.email);

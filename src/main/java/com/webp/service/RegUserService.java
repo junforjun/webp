@@ -42,7 +42,7 @@ public class RegUserService {
 
 		//認証を登録する前にいらなくなった認証（５分が過ぎたもの）を削除する。
 		long delCnt = new JPADeleteClause(em, verificationEmail)
-				.where(verificationEmail.verfiyTime.before(DateUtil.addMin(now, -5)))
+				.where(verificationEmail.verfiyTime.lt(DateUtil.addMin(now, -5)))
 				.execute();
 
 		Log.debug("認証メール：" + delCnt  + "件削除しました。");
@@ -52,7 +52,7 @@ public class RegUserService {
 		model.verfiyStr = verfiyStr;
 		model.email = request.getEmail();
 		model.verfiyTime = now;
-		model.isVerificationed = "0";
+		model.isVerificationed = "1";
 		model.pass = user.passwordEncoder().encode(request.getPass());
 		verfi.save(model);
 
@@ -68,9 +68,9 @@ public class RegUserService {
 		Timestamp now = DateUtil.getCurrentTimeStamp();
 		return new JPAQuery(em).from(verificationEmail)
 						.where(verificationEmail.verfiyStr.eq(verfiyStr)
-								.and(verificationEmail.verfiyTime.goe(DateUtil.addMin(now, 5)))
-								.and(verificationEmail.isVerificationed.eq("0")))
-						.singleResult(verificationEmail);
+								.and(verificationEmail.verfiyTime.gt(DateUtil.addMin(now, -5))
+//								.and(verificationEmail.isVerificationed.eq("0")
+								)).singleResult(verificationEmail);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class RegUserService {
 	public VerificationEmail getVerfyInfoByEmail(String email) {
 		return new JPAQuery(em).from(verificationEmail)
 						.where(verificationEmail.email.eq(email)
-								.and(verificationEmail.isVerificationed.eq("0")))
+								.and(verificationEmail.isVerificationed.eq("1")))
 						.singleResult(verificationEmail);
 	}
 
@@ -90,8 +90,8 @@ public class RegUserService {
 	 * @param model
 	 */
 	@Transactional
-	public void changeFlagForSuccess(VerificationEmail model, String flag) {
-		model.isVerificationed = "1";
+	public void changeFlag(VerificationEmail model, String flag) {
+		model.isVerificationed = flag;
 		verfi.save(model);
 	}
 }

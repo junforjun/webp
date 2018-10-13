@@ -10,7 +10,7 @@ public class Log {
 
 	public static void debug(String message) {
 
-		System.out.println(message);
+		logger.debug(message);
 	}
 
 	public static void info(String message) {

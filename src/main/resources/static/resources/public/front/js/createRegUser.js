@@ -83,7 +83,19 @@ function step2_verify() {
 		dataType:"json",
 		success : function(data) {
 			if (data.message == null) {
-				$("form:first").submit();
+				var form = document.createElement('form');
+				var objs;
+				objs = document.createElement('input');
+//				objs.setAttribute('type', 'hidden');
+//				objs.setAttribute('name', 'name');
+//				objs.setAttribute('value', value);
+				form.appendChild(objs);
+				form.setAttribute('method', 'post');
+				form.setAttribute('action', "/user/registration3");
+				document.body.appendChild(form);
+				form.submit();
+
+
 			} else {
 				alert(data.message);
 			}
